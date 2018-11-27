@@ -18,6 +18,10 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
+import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
+import hu.bartl.bggprofileanalyzer.data.UserProfile;
+import hu.bartl.bggprofileanalyzer.service.ProfileDownloader;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,7 +63,6 @@ public class ProfileDownloaderTest {
         UserProfile profile = underTest.loadProfile(TEST_USER_ID);
         
         Assert.assertEquals("Profile ids are not equal!", TEST_USER_ID, profile.getUserId());
-        Assert.assertEquals("Owned game ids are not equal!", TEST_USER_GAMES, profile.getOwnedGameIds());
     }
     
     @SneakyThrows

@@ -1,4 +1,4 @@
-package hu.bartl.bggprofileanalyzer;
+package hu.bartl.bggprofileanalyzer.data;
 
 import lombok.Data;
 
@@ -8,6 +8,5 @@ import java.util.Set;
 public class UserProfile {
     
     private String userId;
-    
-    private Set<Integer> ownedGameIds;
+    private Set<BoardGame> boardGames;
 }

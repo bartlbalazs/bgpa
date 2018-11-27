@@ -1,4 +1,4 @@
-package hu.bartl.bggprofileanalyzer;
+package hu.bartl.bggprofileanalyzer.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -18,28 +18,31 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+import hu.bartl.bggprofileanalyzer.RetriableRemoteApiException;
+import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
+import hu.bartl.bggprofileanalyzer.data.UserProfile;
+
+@Service
 @RequiredArgsConstructor
 @Slf4j
 public class ProfileDownloader {
     
-    private final String USER_PROFILE_PATTERN = "%s/collection/%s";
-    
+    private final String USER_PROFILE_API_ENDPOINT_PATTERN = "%s/collection/%s?own=1";
+    private final BoardGameDownloader boardGameDownloader;
     private final EnvironmentInformations env;
-    
     private final RestTemplate restTemplate;
-    
     private final ObjectMapper mapper;
     
     @Retryable(
             value = {RetriableRemoteApiException.class},
-            maxAttempts = 5,
-            backoff = @Backoff(delay = 5000))
+            maxAttempts = 10,
+            backoff = @Backoff(delay = 5000, multiplier = 2))
     public UserProfile loadProfile(String userId) {
-        String profileUrl = String.format(USER_PROFILE_PATTERN, env.getApiRoot(), userId);
+        log.info("Downloading information about user started: '{}'", userId);
+        String profileUrl = String.format(USER_PROFILE_API_ENDPOINT_PATTERN, env.getApiRoot(), userId);
         ResponseEntity<String> profileEntity = restTemplate.getForEntity(profileUrl, String.class);
         if (profileEntity.getStatusCode() == HttpStatus.ACCEPTED) {
             log.info("The remote API is not ready to serve profile information for user '{}'", userId);
@@ -50,7 +53,8 @@ public class ProfileDownloader {
         
         UserProfile userProfile = new UserProfile();
         userProfile.setUserId(userId);
-        userProfile.setOwnedGameIds(extractGameIds(profileXml));
+        Set<Integer> ownedGameIds = extractGameIds(profileXml);
+        userProfile.setBoardGames(boardGameDownloader.loadGames(ownedGameIds));
         return userProfile;
     }
     
