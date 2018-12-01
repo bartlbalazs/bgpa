@@ -5,19 +5,13 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.underscore.lodash.U;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,7 +21,7 @@ import org.springframework.web.client.RestTemplate;
 
 import hu.bartl.bggprofileanalyzer.BoardGameCache;
 import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
-import hu.bartl.bggprofileanalyzer.configuration.ThreadConfig.ExecutorServiceFactory;
+import hu.bartl.bggprofileanalyzer.configuration.ThreadConfiguration.ExecutorServiceFactory;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 
 @Service
@@ -38,9 +32,9 @@ public class BoardGameDownloader {
     private static final String BOARDGAME_API_ENDPOINT_PATTERN = "%s/boardgame/%s?stats=1";
     
     private final BoardGameCache boardGameCache;
+    private final XmlParser xmlParser;
     private final EnvironmentInformations env;
     private final RestTemplate restTemplate;
-    private final ObjectMapper mapper;
     private final ExecutorServiceFactory executorServiceFactory;
     
     @SneakyThrows
@@ -95,7 +89,7 @@ public class BoardGameDownloader {
         
         try {
             ResponseEntity<String> boardgamesXml = restTemplate.getForEntity(boardgamesUrl, String.class);
-            Set<BoardGame> downloadedGames = parseBoardGames(boardgamesXml.getBody());
+            Set<BoardGame> downloadedGames = xmlParser.parseBoardGames(boardgamesXml.getBody());
             log.info("Games downloaded: {}", downloadedGames);
             downloadedGames.forEach(boardGameCache::put);
             result = downloadedGames;
@@ -103,38 +97,5 @@ public class BoardGameDownloader {
             log.error("Failed to download games from URL: '{}'", boardgamesUrl, e);
         }
         return result;
-    }
-    
-    @SneakyThrows
-    private Set<BoardGame> parseBoardGames(String boardgamesXml) {
-        TypeReference<HashMap<String, Object>> typeRef = new TypeReference<HashMap<String, Object>>() {};
-        Map<String, Object> boardgamesMap = mapper.readValue(U.xmlToJson(boardgamesXml), typeRef);
-        Map<String, Object> items = (Map<String, Object>) boardgamesMap.get("boardgames");
-        List<Map> item = (List<Map>) items.get("boardgame");
-        return item.stream()
-                   .map(bg -> BoardGame.builder()
-                                       .id(Integer.valueOf((String) bg.get("-objectid")))
-                                       .name(getName(bg.get("name")))
-                                       .yearpublished(Integer.valueOf((String) bg.get("yearpublished")))
-                                       .minplayers(Integer.valueOf((String) bg.get("minplayers")))
-                                       .maxplayers(Integer.valueOf((String) bg.get("maxplayers")))
-                                       .playingtime(Integer.valueOf((String) bg.get("playingtime")))
-                                       .minplaytime(Integer.valueOf((String) bg.get("minplaytime")))
-                                       .maxplaytime(Integer.valueOf((String) bg.get("maxplaytime")))
-                                       .age(Integer.valueOf((String) bg.get("age")))
-                                       .build()
-                   )
-                   .collect(Collectors.toSet());
-    }
-    
-    private String getName(Object names) {
-        if (names instanceof List) {
-            return ((List<Map<String, String>>) names).stream()
-                                                      .filter(n -> "true".equals(n.get("-primary")))
-                                                      .findFirst()
-                                                      .map(n -> String.valueOf(n.get("#text")))
-                                                      .get();
-        }
-        return String.valueOf(((Map) names).get("#text"));
     }
 }

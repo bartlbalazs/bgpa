@@ -7,20 +7,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ThreadConfig {
+public class ThreadConfiguration {
     
     @Bean
     public ExecutorServiceFactory executorServiceFactory() {
-        return new ExecutorServiceFactory() {
-            @Override
-            public ExecutorService get() {
-                return Executors.newCachedThreadPool();
-            }
-        };
+        return () -> Executors.newCachedThreadPool();
     }
     
-    public static interface ExecutorServiceFactory {
-        
+    public interface ExecutorServiceFactory {
         ExecutorService get();
     }
 }
