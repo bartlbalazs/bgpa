@@ -23,13 +23,13 @@ public class TestHelper {
     public static final String SAMPLE_USER_GAMES_DETAILS = "bgg_sample_user_games_details.xml";
     
     @SneakyThrows
-    static String getTestFileContent(String fileName) {
+    public static String getTestFileContent(String fileName) {
         Path path = Paths.get(TestHelper.class.getClassLoader().getResource(fileName).toURI());
         List<String> lines = Files.readAllLines(path);
         return lines.stream().collect(Collectors.joining());
     }
     
-    static Set<BoardGame> getExpectedGames() {
+    public static Set<BoardGame> getExpectedGames() {
         HashSet<BoardGame> boardGames = new HashSet<>();
         boardGames.add(BoardGame.builder()
                                 .id(39351)
@@ -48,7 +48,7 @@ public class TestHelper {
                                 .owned(4905)
                                 .thumbnail("https://cf.geekdo-images.com/thumb/img/5cz_OHBQraTUo259u9UqdnLlkRk=/fit-in/200x150/pic744514.jpg")
                                 .image("https://cf.geekdo-images.com/original/img/RwQJMGiRADlWRiee_AiijICTDxg=/0x0/pic744514.jpg")
-                                .artist(Sets.newLinkedHashSet(
+                                .artists(Sets.newLinkedHashSet(
                                         NamedEntity.builder().id(12516).name("Mike Atkinson").build(),
                                         NamedEntity.builder().id(3262).name("Czarnè").build(),
                                         NamedEntity.builder().id(11802).name("Peter Dennis").build(),
@@ -97,7 +97,7 @@ public class TestHelper {
                                 .owned(3826)
                                 .thumbnail("https://cf.geekdo-images.com/thumb/img/qA7oZwXEKpbhnqAYWjPvyvogreo=/fit-in/200x150/pic1723711.jpg")
                                 .image("https://cf.geekdo-images.com/original/img/mJmwNE2qefn1yUfwfzVaIMA0qaU=/0x0/pic1723711.jpg")
-                                .artist(Sets.newLinkedHashSet(
+                                .artists(Sets.newLinkedHashSet(
                                         NamedEntity.builder().id(49323).name("Xavier Carrascosa").build(),
                                         NamedEntity.builder().id(34490).name("Chechu Nieto").build(),
                                         NamedEntity.builder().id(71).name("Rodger B. MacGowan").build()
@@ -154,7 +154,7 @@ public class TestHelper {
                         .owned(9198)
                         .thumbnail("https://cf.geekdo-images.com/thumb/img/NOZr-fKBWO7WqdrEIObnGu5aPIo=/fit-in/200x150/pic2728138.jpg")
                         .image("https://cf.geekdo-images.com/original/img/4d_XZzAStbyODa6p8xhLyOpIMh8=/0x0/pic2728138.jpg")
-                        .artist(Sets.newLinkedHashSet(
+                        .artists(Sets.newLinkedHashSet(
                                 NamedEntity.builder().id(11507).name("Klemens Franz").build()
                                 ))
                         .designers(Sets.newLinkedHashSet(
