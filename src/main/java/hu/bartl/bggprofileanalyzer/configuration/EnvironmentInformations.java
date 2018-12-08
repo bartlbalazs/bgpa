@@ -14,4 +14,7 @@ public class EnvironmentInformations {
     
     @Value("${app.games-per-api-request}")
     private int gamesPerApiRequest;
+    
+    @Value("${app.cache-expiration-in-hours}")
+    private int cacheExpirationInHours;
 }

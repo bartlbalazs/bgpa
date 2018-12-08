@@ -12,7 +12,7 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import hu.bartl.bggprofileanalyzer.RetriableRemoteApiException;
+import hu.bartl.bggprofileanalyzer.exception.RetriableRemoteApiException;
 import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
 import hu.bartl.bggprofileanalyzer.data.UserProfile;
 

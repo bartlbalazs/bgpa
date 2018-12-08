@@ -19,7 +19,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
-import hu.bartl.bggprofileanalyzer.BoardGameCache;
 import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
 import hu.bartl.bggprofileanalyzer.configuration.ThreadConfiguration.ExecutorServiceFactory;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
@@ -59,19 +58,13 @@ public class BoardGameDownloader {
     }
     
     private Set<BoardGame> loadGames(List<Integer> idList, int firstIdIndex, int pageSize) {
-        Set<BoardGame> result = new HashSet<>();
-        Set<Integer> idsToDownload = new HashSet<>();
+        Set<Integer> idsInPage = idList.stream().skip(firstIdIndex).limit(pageSize).collect(Collectors.toSet());
+       
+        Set<BoardGame> result = boardGameCache.getAll(idsInPage);
+        Set<Integer> cachedGameIds = result.stream().map(BoardGame::getId).collect(Collectors.toSet());
+        idsInPage.removeAll(cachedGameIds);
         
-        idList.stream().skip(firstIdIndex).limit(pageSize).forEach(id -> {
-            Optional<BoardGame> bg = boardGameCache.get(id);
-            if (bg.isPresent()) {
-                result.add(bg.get());
-            } else {
-                idsToDownload.add(id);
-            }
-        });
-        
-        Set<BoardGame> downloadedGames = downloadGames(idsToDownload);
+        Set<BoardGame> downloadedGames = downloadGames(idsInPage);
         result.addAll(downloadedGames);
         
         return result;
