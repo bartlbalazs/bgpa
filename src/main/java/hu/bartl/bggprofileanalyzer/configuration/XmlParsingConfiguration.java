@@ -17,13 +17,15 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static hu.bartl.bggprofileanalyzer.configuration.XmlParsingConfiguration.Issue205FixedUntypedObjectDeserializer.*;
+
 @Configuration
 public class XmlParsingConfiguration {
     
     @Bean
     public XmlMapper xmlMapper() {
         XmlMapper xmlMapper = new XmlMapper();
-        SimpleModule module = new SimpleModule().addDeserializer(Object.class, XmlParsingConfiguration.Issue205FixedUntypedObjectDeserializer.getInstance());
+        SimpleModule module = new SimpleModule().addDeserializer(Object.class, getInstance());
         xmlMapper.registerModule(module);
         return xmlMapper;
     }
@@ -42,7 +44,6 @@ public class XmlParsingConfiguration {
         @Override
         @SuppressWarnings({"unchecked", "rawtypes"})
         protected Object mapObject(JsonParser parser, DeserializationContext context) throws IOException {
-            
             // Read the first key.
             String firstKey;
             JsonToken token = parser.getCurrentToken();
@@ -81,11 +82,8 @@ public class XmlParsingConfiguration {
                 } else {
                     valueByKey.put(nextKey, nextValue);
                 }
-                
             } while ((nextKey = parser.nextFieldName()) != null);
-            
             return valueByKey;
-            
         }
     }
 }
