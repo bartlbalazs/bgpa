@@ -26,7 +26,7 @@ public class BoardGame implements Serializable {
     private String name;
     private String thumbnail;
     private String image;
-    private Set<NamedEntity> artist;
+    private Set<NamedEntity> artists;
     private Set<NamedEntity> designers;
     private Set<NamedEntity> expansions;
     private Set<NamedEntity> families;

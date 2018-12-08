@@ -44,7 +44,7 @@ public class XmlParser {
                                                           .age(Integer.valueOf((String) bg.get("age")))
                                                           .thumbnail((String) bg.get("thumbnail"))
                                                           .image((String) bg.get("image"))
-                                                          .artist(parseNameEntities(bg.get("boardgameartist")))
+                                                          .artists(parseNameEntities(bg.get("boardgameartist")))
                                                           .designers(parseNameEntities(bg.get("boardgamedesigner")))
                                                           .categories(parseNameEntities(bg.get("boardgamecategory")))
                                                           .families(parseNameEntities(bg.get("boardgamefamily")))
