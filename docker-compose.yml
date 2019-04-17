@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  bgpa-server:
+  bgpa-backend:
     build:
-      context: .
+      context: ./backend
       args:
         JAR_FILE: bgg-profile-analyzer-0.0.1-SNAPSHOT.jar
     expose:
