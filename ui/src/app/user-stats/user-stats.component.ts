@@ -8,7 +8,7 @@ import { ApiService } from '../api.service';
 })
 export class UserStatsComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(public apiService: ApiService) { }
 
   json:any=JSON;
 

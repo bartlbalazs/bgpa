@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  userStats:BehaviorSubject<any> = new BehaviorSubject<any>({});
+  public userStats:BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   fetchStats(userId: string) {
     this.httpClient.get('/api/stats/' + userId).subscribe((res: any[]) => {

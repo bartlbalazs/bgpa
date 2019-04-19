@@ -1,5 +1,5 @@
 <div class="container">
   <p>
-    {{json.stringify(apiService.userStats?._value)}}
+    {{json.stringify(apiService.userStats | async)}}
   </p>
 </div>
