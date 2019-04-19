@@ -13,7 +13,7 @@ import hu.bartl.bggprofileanalyzer.service.StatsService;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "/stats", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/stats", produces = APPLICATION_JSON_VALUE)
 @Slf4j
 public class StatController {
     
