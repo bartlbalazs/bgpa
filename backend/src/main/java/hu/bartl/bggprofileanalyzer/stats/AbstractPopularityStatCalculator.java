@@ -18,8 +18,6 @@ import static java.util.Comparator.comparingInt;
 @AllArgsConstructor
 public abstract class AbstractPopularityStatCalculator {
 
-    private static final Long EXPANSION_CATEGORY_ID = 1042L;
-
     private final Function<BoardGame, Set<NamedEntity>> evaluatedPropertyFunction;
 
     public List<Popularity> calculate(Collection<BoardGame> boardGames) {
@@ -54,7 +52,7 @@ public abstract class AbstractPopularityStatCalculator {
     }
 
     protected boolean filterEntity(NamedEntity entity) {
-        return !EXPANSION_CATEGORY_ID.equals(Long.valueOf(entity.getId()));
+        return true;
     }
 }
 
