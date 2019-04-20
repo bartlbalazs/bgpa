@@ -1,5 +1,7 @@
-package hu.bartl.bggprofileanalyzer.data;
+package hu.bartl.bggprofileanalyzer.data.raw;
 
+import hu.bartl.bggprofileanalyzer.data.BoardGame;
+import hu.bartl.bggprofileanalyzer.data.Popularity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,6 +13,7 @@ import java.util.Set;
 public class UserStats {
     
     private final String userId;
+    private final Set<BoardGame> games;
     
     private final List<Popularity> categoryPopularities;
     private final List<Popularity> mechanicPopularities;
@@ -18,18 +21,5 @@ public class UserStats {
     private final List<Popularity> subDomainPopularities;
     private final List<Popularity> artistPopularities;
     private final List<Popularity> familyPopularities;
-    
-    @Data
-    @Builder
-    public static class Popularity {
-        
-        private final Integer entityId;
-        private final String entityName;
-        private final Double gamesRatio;
-        private final Set<NamedEntity> gamesInGroup;
 
-        public Integer getGamesCount() {
-            return gamesInGroup.size();
-        }
-    }
 }

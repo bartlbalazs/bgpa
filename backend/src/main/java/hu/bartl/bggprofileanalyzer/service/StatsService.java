@@ -8,8 +8,8 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
-import hu.bartl.bggprofileanalyzer.data.UserProfile;
-import hu.bartl.bggprofileanalyzer.data.UserStats;
+import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
+import hu.bartl.bggprofileanalyzer.data.raw.UserStats;
 import hu.bartl.bggprofileanalyzer.stats.ArtistsPopularityStatCalculator;
 import hu.bartl.bggprofileanalyzer.stats.CategoryPopularityStatCalculator;
 import hu.bartl.bggprofileanalyzer.stats.DesignerPopularityStatCalculator;
@@ -35,6 +35,7 @@ public class StatsService {
         Set<BoardGame> games = userProfile.getBoardGames();
         return UserStats.builder()
                         .userId(userProfile.getUserId())
+                        .games(games)
                         .categoryPopularities(categoryPopularityStats.calculate(games))
                         .mechanicPopularities(mechanicPopularityStats.calculate(games))
                         .designerPopularities(designerPopularityStats.calculate(games))

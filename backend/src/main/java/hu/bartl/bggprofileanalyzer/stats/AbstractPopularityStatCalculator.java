@@ -1,8 +1,8 @@
 package hu.bartl.bggprofileanalyzer.stats;
 
+import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import hu.bartl.bggprofileanalyzer.data.NamedEntity;
-import hu.bartl.bggprofileanalyzer.data.UserStats;
 import lombok.AllArgsConstructor;
 import org.springframework.data.util.Pair;
 
@@ -18,9 +18,11 @@ import static java.util.Comparator.comparingInt;
 @AllArgsConstructor
 public abstract class AbstractPopularityStatCalculator {
 
+    private static final Long EXPANSION_CATEGORY_ID = 1042L;
+
     private final Function<BoardGame, Set<NamedEntity>> evaluatedPropertyFunction;
 
-    public List<UserStats.Popularity> calculate(Collection<BoardGame> boardGames) {
+    public List<Popularity> calculate(Collection<BoardGame> boardGames) {
 
         Map<NamedEntity, Set<NamedEntity>> popularities = boardGames.stream()
                 .map(this::mapPropertiesToGameIds)
@@ -30,7 +32,7 @@ public abstract class AbstractPopularityStatCalculator {
 
         return popularities.entrySet().stream()
                 .map(c -> mapToPopularity(c, boardGames.size()))
-                .sorted(comparingInt(UserStats.Popularity::getGamesCount).reversed())
+                .sorted(comparingInt(Popularity::getGamesCount).reversed())
                 .collect(Collectors.toList());
     }
 
@@ -42,8 +44,8 @@ public abstract class AbstractPopularityStatCalculator {
                 .collect(Collectors.toSet());
     }
 
-    private UserStats.Popularity mapToPopularity(Map.Entry<NamedEntity, Set<NamedEntity>> entry, int allGamesCount) {
-        return UserStats.Popularity.builder()
+    private Popularity mapToPopularity(Map.Entry<NamedEntity, Set<NamedEntity>> entry, int allGamesCount) {
+        return Popularity.builder()
                 .entityId(entry.getKey().getId())
                 .entityName(entry.getKey().getName())
                 .gamesInGroup(entry.getValue())
@@ -52,7 +54,7 @@ public abstract class AbstractPopularityStatCalculator {
     }
 
     protected boolean filterEntity(NamedEntity entity) {
-        return true;
+        return !EXPANSION_CATEGORY_ID.equals(Long.valueOf(entity.getId()));
     }
 }
 

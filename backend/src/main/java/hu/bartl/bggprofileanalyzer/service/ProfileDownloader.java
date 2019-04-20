@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import hu.bartl.bggprofileanalyzer.exception.RetriableRemoteApiException;
 import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
-import hu.bartl.bggprofileanalyzer.data.UserProfile;
+import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
 
 @Service
 @RequiredArgsConstructor
