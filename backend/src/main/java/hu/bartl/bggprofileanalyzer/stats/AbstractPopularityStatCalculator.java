@@ -26,6 +26,7 @@ public abstract class AbstractPopularityStatCalculator {
         Map<NamedEntity, Long> popularities = boardGames.stream()
                                                         .map(evaluatedPropertyFunction)
                                                         .flatMap(Collection::stream)
+                                                        .filter(this::filterEntity)
                                                         .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
         return popularities.entrySet().stream()
                            .map(c -> mapToPopularity(c, boardGames.size()))
@@ -40,5 +41,9 @@ public abstract class AbstractPopularityStatCalculator {
                                    .gamesCount(toIntExact(entry.getValue()))
                                    .gamesRatio(entry.getValue() * 100.0 / allGamesCount)
                                    .build();
+    }
+
+    protected boolean filterEntity(NamedEntity entity) {
+        return true;
     }
 }
