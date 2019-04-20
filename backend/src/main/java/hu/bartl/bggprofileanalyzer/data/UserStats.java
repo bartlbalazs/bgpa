@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -24,7 +25,11 @@ public class UserStats {
         
         private final Integer entityId;
         private final String entityName;
-        private final Integer gamesCount;
         private final Double gamesRatio;
+        private final Set<NamedEntity> gamesInGroup;
+
+        public Integer getGamesCount() {
+            return gamesInGroup.size();
+        }
     }
 }
