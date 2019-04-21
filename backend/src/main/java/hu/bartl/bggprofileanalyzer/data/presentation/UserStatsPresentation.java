@@ -13,7 +13,7 @@ public class UserStatsPresentation {
     private final String userId;
 
     private final List<Popularity> categoryPopularities;
-    private final List<Popularity> mechanicPopularities;
+    private final List<Popularity> mechanismPopularities;
     private final List<Popularity> designerPopularities;
     private final List<Popularity> subDomainPopularities;
     private final List<Popularity> artistPopularities;
@@ -26,7 +26,7 @@ public class UserStatsPresentation {
                 .categoryPopularities(userStats.getCategoryPopularities())
                 .designerPopularities(userStats.getDesignerPopularities())
                 .familyPopularities(userStats.getFamilyPopularities())
-                .mechanicPopularities(userStats.getMechanicPopularities())
+                .mechanismPopularities(userStats.getMechanismPopularities())
                 .subDomainPopularities(userStats.getSubDomainPopularities())
                 .build();
     }

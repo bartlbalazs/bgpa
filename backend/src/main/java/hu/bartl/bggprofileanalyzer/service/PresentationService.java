@@ -34,7 +34,7 @@ public class PresentationService {
                 configuration.getOthers_max_ratio(),
                 configuration.getMinimalGroupSize()));
 
-        presentationBuilder.mechanicPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getMechanicPopularities(),
+        presentationBuilder.mechanismPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getMechanismPopularities(),
                 configuration.getOther_mechanic_max_ratio(),
                 configuration.getMinimalGroupSize()));
 

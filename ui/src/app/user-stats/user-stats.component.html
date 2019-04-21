@@ -1,5 +1,29 @@
 <div class="container">
-  <p>
-    {{json.stringify(apiService.userStats | async)}}
-  </p>
+  <h2>{{userId}}</h2>
+  <div class="chart container">
+    <h3>Categories</h3>
+    <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="categoryPopularities"
+      [legend]="showLegend"
+      [explodeSlices]="explodeSlices"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [gradient]="gradient">
+    </ngx-charts-pie-chart>
+  </div>
+  <div class="chart container">
+      <h3>Mechanisms</h3>
+      <ngx-charts-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="mechanismPopularities"
+        [legend]="showLegend"
+        [explodeSlices]="explodeSlices"
+        [labels]="showLabels"
+        [doughnut]="doughnut"
+        [gradient]="gradient">
+      </ngx-charts-pie-chart>
+    </div>
 </div>

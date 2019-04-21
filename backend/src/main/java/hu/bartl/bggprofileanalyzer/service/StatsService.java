@@ -37,7 +37,7 @@ public class StatsService {
                         .userId(userProfile.getUserId())
                         .games(games)
                         .categoryPopularities(categoryPopularityStats.calculate(games))
-                        .mechanicPopularities(mechanicPopularityStats.calculate(games))
+                        .mechanismPopularities(mechanicPopularityStats.calculate(games))
                         .designerPopularities(designerPopularityStats.calculate(games))
                         .subDomainPopularities(subDomainPopularityStatCalculator.calculate(games))
                         .artistPopularities(artistPopularityStatCalculator.calculate(games))

@@ -73,6 +73,6 @@ public class PopularityStatCalculatorTest {
         FamilyPopularityStatCalculator underTest = new FamilyPopularityStatCalculator();
         List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Components: Miniatures"));
-        assertThat(result.size(), is(86));
+        assertThat(result.size(), is(85));
     }
 }
