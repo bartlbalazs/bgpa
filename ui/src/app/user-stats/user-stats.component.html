@@ -33,4 +33,64 @@
     </div>
   </div>
 
+  <h4 id="designers" *ngIf="popularities.designer">Designers</h4>
+  <div class="row">
+    <div class="col-sm">
+      <ngx-charts-pie-chart *ngIf="popularities.designer" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+        [results]="popularities.designer.chartData" [legend]="chartConfig.showLegend"
+        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
+        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('designer' ,$event)">
+      </ngx-charts-pie-chart>
+    </div>
+    <div class="col-sm">
+      <app-game-list *ngIf="selected_items.designer" [listOf]="selected_items.designer.name"
+        [games]="selected_items.designer.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+    </div>
+  </div>
+
+  <h4 id="artists" *ngIf="popularities.artist">Artists</h4>
+  <div class="row">
+    <div class="col-sm">
+      <ngx-charts-pie-chart *ngIf="popularities.artist" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+        [results]="popularities.artist.chartData" [legend]="chartConfig.showLegend"
+        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
+        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('artist' ,$event)">
+      </ngx-charts-pie-chart>
+    </div>
+    <div class="col-sm">
+      <app-game-list *ngIf="selected_items.artist" [listOf]="selected_items.artist.name"
+        [games]="selected_items.artist.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+    </div>
+  </div>
+
+  <h4 id="families" *ngIf="popularities.family">Families</h4>
+  <div class="row">
+    <div class="col-sm">
+      <ngx-charts-pie-chart *ngIf="popularities.family" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+        [results]="popularities.family.chartData" [legend]="chartConfig.showLegend"
+        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
+        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('family' ,$event)">
+      </ngx-charts-pie-chart>
+    </div>
+    <div class="col-sm">
+      <app-game-list *ngIf="selected_items.family" [listOf]="selected_items.family.name"
+        [games]="selected_items.family.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+    </div>
+  </div>
+
+  <h4 id="subdomains" *ngIf="popularities.subDomain">Sub domains</h4>
+  <div class="row">
+    <div class="col-sm">
+      <ngx-charts-pie-chart *ngIf="popularities.subDomain" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+        [results]="popularities.subDomain.chartData" [legend]="chartConfig.showLegend"
+        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
+        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('subDomain' ,$event)">
+      </ngx-charts-pie-chart>
+    </div>
+    <div class="col-sm">
+      <app-game-list *ngIf="selected_items.subDomain" [listOf]="selected_items.subDomain.name"
+        [games]="selected_items.subDomain.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+    </div>
+  </div>
+
 </div>

@@ -9,17 +9,23 @@ import org.springframework.stereotype.Component;
 public class PresentationConfiguration {
 
     @Value("${app.others-default-group-max-ratio}")
-    private int others_max_ratio;
+    private int othersMaxRatio;
 
     @Value("${app.artist-group-max-ratio}")
-    private int other_artist_max_ratio;
+    private int otherArtistMaxRatio;
 
     @Value("${app.designer-group-max-ratio}")
-    private int other_designer_max_ratio;
+    private int otherDesignerMaxRatio;
 
     @Value("${app.mechanic-group-max-ratio}")
-    private int other_mechanic_max_ratio;
+    private int otherMechanicMaxRatio;
+
+    @Value("${app.subdomain-group-max-ratio}")
+    private int otherSubdomainMaxRatio;
 
     @Value("${app.default-minimal_group_size}")
     private int minimalGroupSize;
+
+    @Value("${app.subdomain-minimal_group_size}")
+    private int minimalSubdomainGroupSize;
 }

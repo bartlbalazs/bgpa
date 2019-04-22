@@ -19,28 +19,28 @@ public class PresentationService {
         UserStatsPresentation.UserStatsPresentationBuilder presentationBuilder = UserStatsPresentation.fromRawStats(rawStats).toBuilder();
 
         presentationBuilder.artistPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getArtistPopularities(),
-                configuration.getOther_artist_max_ratio(),
+                configuration.getOtherArtistMaxRatio(),
                 configuration.getMinimalGroupSize()));
 
         presentationBuilder.categoryPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getCategoryPopularities(),
-                configuration.getOthers_max_ratio(),
+                configuration.getOthersMaxRatio(),
                 configuration.getMinimalGroupSize()));
 
         presentationBuilder.designerPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getDesignerPopularities(),
-                configuration.getOther_designer_max_ratio(),
+                configuration.getOtherDesignerMaxRatio(),
                 configuration.getMinimalGroupSize()));
 
         presentationBuilder.familyPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getFamilyPopularities(),
-                configuration.getOthers_max_ratio(),
+                configuration.getOthersMaxRatio(),
                 configuration.getMinimalGroupSize()));
 
         presentationBuilder.mechanismPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getMechanismPopularities(),
-                configuration.getOther_mechanic_max_ratio(),
+                configuration.getOtherMechanicMaxRatio(),
                 configuration.getMinimalGroupSize()));
 
         presentationBuilder.subDomainPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getSubDomainPopularities(),
-                configuration.getOthers_max_ratio(),
-                configuration.getMinimalGroupSize()));
+                configuration.getOtherSubdomainMaxRatio(),
+                configuration.getMinimalSubdomainGroupSize()));
 
         return presentationBuilder.build();
     }

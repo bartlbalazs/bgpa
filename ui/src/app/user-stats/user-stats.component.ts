@@ -30,6 +30,10 @@ export class UserStatsComponent implements OnInit, OnDestroy {
       if (message.userId) {
         this.popularities['theme'] = PopularityData.fromRawData(message.categoryPopularities);
         this.popularities['mechanism'] = PopularityData.fromRawData(message.mechanismPopularities);
+        this.popularities['designer'] = PopularityData.fromRawData(message.designerPopularities);
+        this.popularities['artist'] = PopularityData.fromRawData(message.artistPopularities);
+        this.popularities['subDomain'] = PopularityData.fromRawData(message.subDomainPopularities);
+        this.popularities['family'] = PopularityData.fromRawData(message.familyPopularities);
         this.selected_items = {}
       }
     };
