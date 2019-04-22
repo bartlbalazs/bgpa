@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Subscription } from 'rxjs';
+import { ChartConfig } from '../shared/ChartConfig'
+import { PopularityData } from '../shared/PopularityData'
 
 @Component({
   selector: 'app-user-stats',
@@ -9,44 +11,42 @@ import { Subscription } from 'rxjs';
 })
 export class UserStatsComponent implements OnInit, OnDestroy {
 
-  view: any[] = [700, 400];
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Number';
-  showYAxisLabel = true;
-  yAxisLabel = 'Value';
-  timeline = true;
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
-  showLabels = true;
-  explodeSlices = false;
-  doughnut = false;
-
+  chartConfig: ChartConfig
 
   statSubscription: Subscription;
 
-  userId: String = ''
-  categoryPopularities: any = []
-  mechanismPopularities: any = []
+  userId: String
 
-  constructor(public apiService: ApiService) {
-    this.statSubscription = this.apiService.userStats.subscribe(message => {
-      if (message.userId) {
-        this.userId = message.userId
-        this.categoryPopularities = message.categoryPopularities.map(c => new Object({ "name": c.entityName, "value": c.gamesCount }))
-        this.mechanismPopularities = message.mechanismPopularities.map(c => new Object({ "name": c.entityName, "value": c.gamesCount }))
-      }
-    })
-  }
+  themePopularities: PopularityData
+  mechanismPopularities: PopularityData
+
+  selected_theme: any
+  selected_mechanism: any
+
+  constructor(public apiService: ApiService) { }
 
   ngOnInit() {
+    this.statSubscription = this.apiService.userStats.subscribe(this.handleUserStats())
+    this.chartConfig = new ChartConfig()
+  }
+
+  private handleUserStats(): (value: any) => void {
+    return message => {
+      if (message.userId) {
+        this.userId = message.userId;
+        this.themePopularities = PopularityData.fromRawData(message.categoryPopularities);
+        this.mechanismPopularities = PopularityData.fromRawData(message.mechanismPopularities);
+        this.selected_theme = null
+        this.selected_mechanism = null
+      }
+    };
   }
 
   ngOnDestroy(): void {
     this.statSubscription.unsubscribe();
+  }
+
+  onSelectFromChart(chartId: string, $event: any) {
+    this['selected_' + chartId] = this[chartId + 'Popularities'].fullData[$event.name]
   }
 }

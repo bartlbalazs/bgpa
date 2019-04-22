@@ -2,8 +2,8 @@ package hu.bartl.bggprofileanalyzer.stats;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import hu.bartl.bggprofileanalyzer.data.NamedEntityWithPicture;
 import hu.bartl.bggprofileanalyzer.data.Popularity;
-import hu.bartl.bggprofileanalyzer.data.NamedEntity;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -73,10 +73,10 @@ public class PopularityStatAggregatorTest {
                 .entityName("G_" + ratio).gamesInGroup(groupOfNGames(ratio)).gamesRatio(Double.valueOf(ratio)).build();
     }
 
-    private Set<NamedEntity> groupOfNGames(int n) {
-        Set<NamedEntity> result = Sets.newHashSet();
+    private Set<NamedEntityWithPicture> groupOfNGames(int n) {
+        Set<NamedEntityWithPicture> result = Sets.newHashSet();
         for (int i = 0; i < n; i++) {
-            result.add(NamedEntity.builder().id(i).name(String.valueOf(i)).build());
+            result.add(NamedEntityWithPicture.withPicture().id(i).name(String.valueOf(i)).build());
         }
         return result;
     }

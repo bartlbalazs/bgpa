@@ -12,7 +12,7 @@ public class Popularity {
     private final Integer entityId;
     private final String entityName;
     private final Double gamesRatio;
-    private final Set<NamedEntity> gamesInGroup;
+    private final Set<NamedEntityWithPicture> gamesInGroup;
 
     public Integer getGamesCount() {
         return gamesInGroup.size();

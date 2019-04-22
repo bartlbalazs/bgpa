@@ -1,8 +1,9 @@
 package hu.bartl.bggprofileanalyzer.stats;
 
-import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import hu.bartl.bggprofileanalyzer.data.NamedEntity;
+import hu.bartl.bggprofileanalyzer.data.NamedEntityWithPicture;
+import hu.bartl.bggprofileanalyzer.data.Popularity;
 import lombok.AllArgsConstructor;
 import org.springframework.data.util.Pair;
 
@@ -22,7 +23,7 @@ public abstract class AbstractPopularityStatCalculator {
 
     public List<Popularity> calculate(Collection<BoardGame> boardGames) {
 
-        Map<NamedEntity, Set<NamedEntity>> popularities = boardGames.stream()
+        Map<NamedEntity, Set<NamedEntityWithPicture>> popularities = boardGames.stream()
                 .map(this::mapPropertiesToGameIds)
                 .flatMap(Collection::stream)
                 .collect(Collectors.groupingBy(c -> c.getFirst(), Collectors.mapping(Pair::getSecond, Collectors.toSet())));
@@ -34,15 +35,19 @@ public abstract class AbstractPopularityStatCalculator {
                 .collect(Collectors.toList());
     }
 
-    private Set<Pair<NamedEntity, NamedEntity>> mapPropertiesToGameIds(BoardGame boardGame) {
+    private Set<Pair<NamedEntity, NamedEntityWithPicture>> mapPropertiesToGameIds(BoardGame boardGame) {
         return evaluatedPropertyFunction.apply(boardGame)
                 .stream()
                 .filter(this::filterEntity)
-                .map(p -> Pair.of(p, NamedEntity.builder().id(boardGame.getId()).name(boardGame.getName()).build()))
+                .map(p -> Pair.of(p, NamedEntityWithPicture.withPicture()
+                        .id(boardGame.getId())
+                        .name(boardGame.getName())
+                        .thumbnail(boardGame.getThumbnail())
+                        .build()))
                 .collect(Collectors.toSet());
     }
 
-    private Popularity mapToPopularity(Map.Entry<NamedEntity, Set<NamedEntity>> entry, int allGamesCount) {
+    private Popularity mapToPopularity(Map.Entry<NamedEntity, Set<NamedEntityWithPicture>> entry, int allGamesCount) {
         return Popularity.builder()
                 .entityId(entry.getKey().getId())
                 .entityName(entry.getKey().getName())
