@@ -4,8 +4,6 @@ services:
   bgpa-backend:
     build:
       context: ./backend
-      args:
-        JAR_FILE: bgg-profile-analyzer-0.0.1-SNAPSHOT.jar
     networks:
       - bgpa-net
     links:
