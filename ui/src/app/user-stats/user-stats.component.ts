@@ -17,11 +17,8 @@ export class UserStatsComponent implements OnInit, OnDestroy {
 
   userId: String
 
-  themePopularities: PopularityData
-  mechanismPopularities: PopularityData
-
-  selected_theme: any
-  selected_mechanism: any
+  popularities: any = {}
+  selected_items: any = {}
 
   constructor(public apiService: ApiService) { }
 
@@ -34,10 +31,9 @@ export class UserStatsComponent implements OnInit, OnDestroy {
     return message => {
       if (message.userId) {
         this.userId = message.userId;
-        this.themePopularities = PopularityData.fromRawData(message.categoryPopularities);
-        this.mechanismPopularities = PopularityData.fromRawData(message.mechanismPopularities);
-        this.selected_theme = null
-        this.selected_mechanism = null
+        this.popularities['theme'] = PopularityData.fromRawData(message.categoryPopularities);
+        this.popularities['mechanism'] = PopularityData.fromRawData(message.mechanismPopularities);
+        this.selected_items = {}
       }
     };
   }
@@ -47,6 +43,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
   }
 
   onSelectFromChart(chartId: string, $event: any) {
-    this['selected_' + chartId] = this[chartId + 'Popularities'].fullData[$event.name]
+    let id = $event.name || $event
+    this.selected_items[chartId] = this.popularities[chartId].fullData[id]
   }
 }

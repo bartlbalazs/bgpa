@@ -3,45 +3,34 @@
   <h3>Themes</h3>
   <div class="row">
     <div class="col-sm">
-      <ngx-charts-pie-chart [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="themePopularities.chartData" [legend]="chartConfig.showLegend"
+      <ngx-charts-pie-chart *ngIf="popularities.theme" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+        [results]="popularities.theme.chartData" [legend]="chartConfig.showLegend"
         [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
         [gradient]="chartConfig.gradient" (select)="onSelectFromChart('theme', $event)">
       </ngx-charts-pie-chart>
     </div>
 
-    <div class="col-sm game-list-panel" *ngIf="selected_theme">
-      <h4>{{selected_theme.name}}</h4>
-      <ul class="list-group" [style.max-height.px]="chartConfig.view[1] - 40">
-        <li *ngFor="let game of selected_theme.gamesInGroup" class="list-group-item media">
-          <img src="{{game.thumbnail}}" alt="{{game.name}}" class="img-thumbnail rounded-circle mr-2">
-          <a href="https://boardgamegeek.com/boardgame/{{game.id}}" target="blank"
-            class="h5 mt-2 media-body">{{game.name}}</a>
-        </li>
-      </ul>
+    <div class="col-sm game-list-panel">
+      <div class="col-sm">
+        <app-game-list *ngIf="selected_items.theme" [listOf]="selected_items.theme.name"
+          [games]="selected_items.theme.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+      </div>
     </div>
-
   </div>
+
   <h3>Mechanisms</h3>
   <div class="row">
     <div class="col-sm">
-      <ngx-charts-pie-chart [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="mechanismPopularities.chartData" [legend]="chartConfig.showLegend"
+      <ngx-charts-pie-chart *ngIf="popularities.mechanism" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+        [results]="popularities.mechanism.chartData" [legend]="chartConfig.showLegend"
         [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
         [gradient]="chartConfig.gradient" (select)="onSelectFromChart('mechanism' ,$event)">
       </ngx-charts-pie-chart>
     </div>
-
-    <div class="col-sm game-list-panel" *ngIf="selected_mechanism">
-      <h4>{{selected_mechanism.name}}</h4>
-      <ul class="list-group" [style.max-height.px]="chartConfig.view[1] - 40">
-        <li *ngFor="let game of selected_mechanism.gamesInGroup" class="list-group-item media">
-          <img src="{{game.thumbnail}}" alt="{{game.name}}" class="img-thumbnail rounded-circle mr-2">
-          <a href="https://boardgamegeek.com/boardgame/{{game.id}}" target="blank"
-            class="h5 mt-2 media-body">{{game.name}}</a>
-        </li>
-      </ul>
+    <div class="col-sm">
+      <app-game-list *ngIf="selected_items.mechanism" [listOf]="selected_items.mechanism.name"
+        [games]="selected_items.mechanism.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
     </div>
-
   </div>
+
 </div>
