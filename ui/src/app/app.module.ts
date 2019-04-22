@@ -10,13 +10,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
 import { ApiService } from './api.service';
 import { GameListComponent } from './game-list/game-list.component';
+import { PageNavComponent } from './page-nav/page-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     UserStatsComponent,
-    GameListComponent
+    GameListComponent,
+    PageNavComponent
   ],
   imports: [
     BrowserModule,

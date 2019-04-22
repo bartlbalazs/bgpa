@@ -1,6 +1,6 @@
-<div *ngIf="userId" id="user-stats" class="container">
-  <h2>{{userId}}</h2>
-  <h3>Themes</h3>
+<div id="user-stats" class="container">
+  <h3 id="preferences">Preferences</h3>
+  <h4 id="themes" *ngIf="popularities.theme">Themes</h4>
   <div class="row">
     <div class="col-sm">
       <ngx-charts-pie-chart *ngIf="popularities.theme" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <h3>Mechanisms</h3>
+  <h4 id="mechanisms" *ngIf="popularities.mechanism">Mechanisms</h4>
   <div class="row">
     <div class="col-sm">
       <ngx-charts-pie-chart *ngIf="popularities.mechanism" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"

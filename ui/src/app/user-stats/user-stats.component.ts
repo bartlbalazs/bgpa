@@ -15,8 +15,6 @@ export class UserStatsComponent implements OnInit, OnDestroy {
 
   statSubscription: Subscription;
 
-  userId: String
-
   popularities: any = {}
   selected_items: any = {}
 
@@ -30,7 +28,6 @@ export class UserStatsComponent implements OnInit, OnDestroy {
   private handleUserStats(): (value: any) => void {
     return message => {
       if (message.userId) {
-        this.userId = message.userId;
         this.popularities['theme'] = PopularityData.fromRawData(message.categoryPopularities);
         this.popularities['mechanism'] = PopularityData.fromRawData(message.mechanismPopularities);
         this.selected_items = {}
