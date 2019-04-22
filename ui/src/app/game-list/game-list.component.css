@@ -1,0 +1,13 @@
+.game-list-panel ul {
+    overflow-y: auto;
+}
+
+.game-list-panel .list-group-item {
+    display: flex;
+    padding: .5rem
+}
+
+.game-list-panel .img-thumbnail {
+    width: 45px;
+    height: 45px;
+}

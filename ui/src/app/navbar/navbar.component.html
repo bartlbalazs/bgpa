@@ -1,7 +1,8 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand">BGPA</a>
+  <h2>{{displayUserId}}</h2>
   <form #searchForm="ngForm" (ngSubmit)="onSubmit()" class="form-inline">
-    <input class="form-control mr-sm-2" [(ngModel)]="userId" name="userId" type="search" placeholder="Search" aria-label="Search">
+    <input class="form-control mr-sm-2" [(ngModel)]="searchUserId" name="userId" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>

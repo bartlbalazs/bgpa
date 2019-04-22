@@ -1,5 +1,6 @@
-package hu.bartl.bggprofileanalyzer.data;
+package hu.bartl.bggprofileanalyzer.data.raw;
 
+import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import lombok.Data;
 
 import java.util.Set;

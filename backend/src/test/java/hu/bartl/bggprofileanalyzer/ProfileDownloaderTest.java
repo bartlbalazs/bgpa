@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
-import hu.bartl.bggprofileanalyzer.data.UserProfile;
+import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
 import hu.bartl.bggprofileanalyzer.service.ProfileDownloader;
 
 import org.junit.Assert;

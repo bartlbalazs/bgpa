@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +9,25 @@ import { ApiService } from '../api.service';
 })
 export class NavbarComponent implements OnInit {
 
-  userId: string;
+  searchUserId: string;
+  displayUserId: string;
 
+  statSubscription: Subscription;
+  
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.statSubscription = this.apiService.userStats.subscribe(message => {
+      this.displayUserId = message.userId
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.statSubscription.unsubscribe();
   }
 
   onSubmit() {
-    this.apiService.fetchStats(this.userId)
-    this.userId = ''
+    this.apiService.fetchStats(this.searchUserId)
+    this.searchUserId = ''
   }
 }

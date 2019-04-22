@@ -6,8 +6,8 @@ import java.util.Set;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import hu.bartl.bggprofileanalyzer.configuration.XmlParsingConfiguration;
+import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
-import hu.bartl.bggprofileanalyzer.data.UserStats;
 import hu.bartl.bggprofileanalyzer.service.XmlParser;
 
 import org.junit.BeforeClass;
@@ -31,7 +31,7 @@ public class PopularityStatCalculatorTest {
     @Test
     public void calculateCategoryPopularities() {
         CategoryPopularityStatCalculator underTest = new CategoryPopularityStatCalculator();
-        List<UserStats.Popularity> result = underTest.calculate(boardGames);
+        List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Economic"));
         assertThat(result.size(), is(46));
     }
@@ -39,7 +39,7 @@ public class PopularityStatCalculatorTest {
     @Test
     public void calculateMechanicPopularities() {
         MechanicPopularityStatCalculator underTest = new MechanicPopularityStatCalculator();
-        List<UserStats.Popularity> result = underTest.calculate(boardGames);
+        List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Hand Management"));
         assertThat(result.size(), is(35));
     }
@@ -47,7 +47,7 @@ public class PopularityStatCalculatorTest {
     @Test
     public void calculateDesignerPopularities() {
         DesignerPopularityStatCalculator underTest = new DesignerPopularityStatCalculator();
-        List<UserStats.Popularity> result = underTest.calculate(boardGames);
+        List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Martin Wallace"));
         assertThat(result.size(), is(58));
     }
@@ -55,7 +55,7 @@ public class PopularityStatCalculatorTest {
     @Test
     public void calculateSubDomainPopularities() {
         SubDomainPopularityStatCalculator underTest = new SubDomainPopularityStatCalculator();
-        List<UserStats.Popularity> result = underTest.calculate(boardGames);
+        List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Strategy Games"));
         assertThat(result.size(), is(5));
     }
@@ -63,7 +63,7 @@ public class PopularityStatCalculatorTest {
     @Test
     public void calculateArtistPopularities() {
         ArtistsPopularityStatCalculator underTest = new ArtistsPopularityStatCalculator();
-        List<UserStats.Popularity> result = underTest.calculate(boardGames);
+        List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Klemens Franz"));
         assertThat(result.size(), is(79));
     }
@@ -71,8 +71,8 @@ public class PopularityStatCalculatorTest {
     @Test
     public void calculateFamilyPopularities() {
         FamilyPopularityStatCalculator underTest = new FamilyPopularityStatCalculator();
-        List<UserStats.Popularity> result = underTest.calculate(boardGames);
+        List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Components: Miniatures"));
-        assertThat(result.size(), is(86));
+        assertThat(result.size(), is(85));
     }
 }

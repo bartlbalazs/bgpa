@@ -1,0 +1,10 @@
+<div class="game-list-panel">
+  <h4>{{listOf}}</h4>
+  <ul class="list-group" [style.max-height.px]="maxHeight">
+    <li *ngFor="let game of games" class="list-group-item media">
+      <img src="{{game.thumbnail}}" alt="{{game.name}}" class="img-thumbnail rounded-circle mr-2">
+      <a href="https://boardgamegeek.com/boardgame/{{game.id}}" target="blank"
+        class="h5 mt-2 media-body">{{game.name}}</a>
+    </li>
+  </ul>
+</div>
