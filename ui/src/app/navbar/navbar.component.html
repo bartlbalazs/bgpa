@@ -1,8 +1,14 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand">BGPA</a>
-  <h2>{{displayUserId}}</h2>
-  <form #searchForm="ngForm" (ngSubmit)="onSubmit()" class="form-inline">
-    <input class="form-control mr-sm-2" [(ngModel)]="searchUserId" name="userId" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  <form #searchForm="ngForm" (ngSubmit)="onSubmit()"
+    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <div class="input-group">
+      <input type="text" class="form-control bg-light border-0 small" [(ngModel)]="searchUserId" name="userId"
+        type="search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
   </form>
 </nav>

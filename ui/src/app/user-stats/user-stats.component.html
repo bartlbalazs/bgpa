@@ -1,96 +1,166 @@
-<div id="user-stats" class="container">
-  <h3 id="preferences">Preferences</h3>
-  <h4 id="themes" *ngIf="popularities.theme">Themes</h4>
-  <div class="row">
-    <div class="col-sm">
-      <ngx-charts-pie-chart *ngIf="popularities.theme" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="popularities.theme.chartData" [legend]="chartConfig.showLegend"
-        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
-        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('theme', $event)">
-      </ngx-charts-pie-chart>
-    </div>
+<div *ngIf="userId">
+  <h2>{{userId}}</h2>
+  <h3 class="h3 mb-0 text-gray-800">Preferences</h3>
+</div>
 
-    <div class="col-sm game-list-panel">
-      <div class="col-sm">
-        <app-game-list *ngIf="selected_items.theme" [listOf]="selected_items.theme.name"
-          [games]="selected_items.theme.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+<div id="themes" *ngIf="popularities.theme" class="row">
+  <div class="col-lg-6">
+    <div class="card shadow mb-4">
+
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Themes</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="chart-area">
+          <ngx-charts-pie-chart *ngIf="popularities.theme" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+            [results]="popularities.theme.chartData" [legend]="chartConfig.showLegend"
+            [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels"
+            [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient"
+            (select)="onSelectFromChart('theme', $event)">
+          </ngx-charts-pie-chart>
+        </div>
       </div>
     </div>
   </div>
 
-  <h4 id="mechanisms" *ngIf="popularities.mechanism">Mechanisms</h4>
-  <div class="row">
-    <div class="col-sm">
-      <ngx-charts-pie-chart *ngIf="popularities.mechanism" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="popularities.mechanism.chartData" [legend]="chartConfig.showLegend"
-        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
-        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('mechanism' ,$event)">
-      </ngx-charts-pie-chart>
-    </div>
-    <div class="col-sm">
-      <app-game-list *ngIf="selected_items.mechanism" [listOf]="selected_items.mechanism.name"
-        [games]="selected_items.mechanism.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+  <div class="col-lg-6 game-list-panel">
+    <app-game-list *ngIf="selected_items.theme" [listOf]="selected_items.theme.name"
+      [games]="selected_items.theme.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
+  </div>
+</div>
+
+<div id="mechanisms" *ngIf="popularities.mechanisms" class="row">
+  <div class="col-lg-6">
+    <div class="card shadow mb-4">
+
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Mechanisms</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="chart-area">
+          <ngx-charts-pie-chart *ngIf="popularities.mechanisms" [view]="chartConfig.view"
+            [scheme]="chartConfig.colorScheme" [results]="popularities.mechanisms.chartData"
+            [legend]="chartConfig.showLegend" [explodeSlices]="chartConfig.explodeSlices"
+            [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient"
+            (select)="onSelectFromChart('mechanisms', $event)">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
     </div>
   </div>
 
-  <h4 id="designers" *ngIf="popularities.designer">Designers</h4>
-  <div class="row">
-    <div class="col-sm">
-      <ngx-charts-pie-chart *ngIf="popularities.designer" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="popularities.designer.chartData" [legend]="chartConfig.showLegend"
-        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
-        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('designer' ,$event)">
-      </ngx-charts-pie-chart>
-    </div>
-    <div class="col-sm">
-      <app-game-list *ngIf="selected_items.designer" [listOf]="selected_items.designer.name"
-        [games]="selected_items.designer.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+  <div class="col-lg-6 game-list-panel">
+    <app-game-list *ngIf="selected_items.mechanisms" [listOf]="selected_items.mechanisms.name"
+      [games]="selected_items.mechanisms.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
+  </div>
+</div>
+
+<div id="designers" *ngIf="popularities.designers" class="row">
+  <div class="col-lg-6">
+    <div class="card shadow mb-4">
+
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Designers</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="chart-area">
+          <ngx-charts-pie-chart *ngIf="popularities.designers" [view]="chartConfig.view"
+            [scheme]="chartConfig.colorScheme" [results]="popularities.designers.chartData"
+            [legend]="chartConfig.showLegend" [explodeSlices]="chartConfig.explodeSlices"
+            [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient"
+            (select)="onSelectFromChart('designers', $event)">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
     </div>
   </div>
 
-  <h4 id="artists" *ngIf="popularities.artist">Artists</h4>
-  <div class="row">
-    <div class="col-sm">
-      <ngx-charts-pie-chart *ngIf="popularities.artist" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="popularities.artist.chartData" [legend]="chartConfig.showLegend"
-        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
-        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('artist' ,$event)">
-      </ngx-charts-pie-chart>
-    </div>
-    <div class="col-sm">
-      <app-game-list *ngIf="selected_items.artist" [listOf]="selected_items.artist.name"
-        [games]="selected_items.artist.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+  <div class="col-lg-6 game-list-panel">
+    <app-game-list *ngIf="selected_items.designers" [listOf]="selected_items.designers.name"
+      [games]="selected_items.designers.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
+  </div>
+</div>
+
+<div id="artists" *ngIf="popularities.artist" class="row">
+  <div class="col-lg-6">
+    <div class="card shadow mb-4">
+
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Artists</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="chart-area">
+          <ngx-charts-pie-chart *ngIf="popularities.artist" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+            [results]="popularities.artist.chartData" [legend]="chartConfig.showLegend"
+            [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels"
+            [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient"
+            (select)="onSelectFromChart('artist', $event)">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
     </div>
   </div>
 
-  <h4 id="families" *ngIf="popularities.family">Families</h4>
-  <div class="row">
-    <div class="col-sm">
-      <ngx-charts-pie-chart *ngIf="popularities.family" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="popularities.family.chartData" [legend]="chartConfig.showLegend"
-        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
-        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('family' ,$event)">
-      </ngx-charts-pie-chart>
-    </div>
-    <div class="col-sm">
-      <app-game-list *ngIf="selected_items.family" [listOf]="selected_items.family.name"
-        [games]="selected_items.family.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+  <div class="col-lg-6 game-list-panel">
+    <app-game-list *ngIf="selected_items.artist" [listOf]="selected_items.artist.name"
+      [games]="selected_items.artist.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
+  </div>
+</div>
+
+<div id="families" *ngIf="popularities.family" class="row">
+  <div class="col-lg-6">
+    <div class="card shadow mb-4">
+
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Families</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="chart-area">
+          <ngx-charts-pie-chart *ngIf="popularities.family" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
+            [results]="popularities.family.chartData" [legend]="chartConfig.showLegend"
+            [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels"
+            [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient"
+            (select)="onSelectFromChart('family', $event)">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
     </div>
   </div>
 
-  <h4 id="subdomains" *ngIf="popularities.subDomain">Sub domains</h4>
-  <div class="row">
-    <div class="col-sm">
-      <ngx-charts-pie-chart *ngIf="popularities.subDomain" [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-        [results]="popularities.subDomain.chartData" [legend]="chartConfig.showLegend"
-        [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut"
-        [gradient]="chartConfig.gradient" (select)="onSelectFromChart('subDomain' ,$event)">
-      </ngx-charts-pie-chart>
-    </div>
-    <div class="col-sm">
-      <app-game-list *ngIf="selected_items.subDomain" [listOf]="selected_items.subDomain.name"
-        [games]="selected_items.subDomain.gamesInGroup" [maxHeight]="chartConfig.view[1] - 40"></app-game-list>
+  <div class="col-lg-6 game-list-panel">
+    <app-game-list *ngIf="selected_items.family" [listOf]="selected_items.family.name"
+      [games]="selected_items.family.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
+  </div>
+</div>
+
+<div id="subdomains" *ngIf="popularities.subDomain" class="row">
+  <div class="col-lg-6">
+    <div class="card shadow mb-4">
+
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Subdomains</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="chart-area">
+          <ngx-charts-pie-chart *ngIf="popularities.subDomain" [view]="chartConfig.view"
+            [scheme]="chartConfig.colorScheme" [results]="popularities.subDomain.chartData"
+            [legend]="chartConfig.showLegend" [explodeSlices]="chartConfig.explodeSlices"
+            [labels]="chartConfig.showLabels" [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient"
+            (select)="onSelectFromChart('subDomain', $event)">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="col-lg-6 game-list-panel">
+    <app-game-list *ngIf="selected_items.subDomain" [listOf]="selected_items.subDomain.name"
+      [games]="selected_items.subDomain.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
+  </div>
 </div>
