@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  bgpa-backend:
+    image: 'bartlbalazs/bgpa-backend'
+    networks:
+      - bgpa-net
+    links:
+      - "redis-server:redis"
+    depends_on:
+      - redis-server
+
+  bgpa-ui:
+    image: 'bartlbalazs/bgpa-ui'
+    expose:
+      - "80"
+    ports:
+      - "80:80"
+    networks:
+      - bgpa-net
+    links:
+      - "redis-server:redis"
+      - "bgpa-backend:backend"
+    depends_on:
+      - redis-server
+      - bgpa-backend
+
+
+  redis-server:
+    image: "redis:alpine"
+    command: ["redis-server", "--appendonly", "yes"]
+    networks:
+      - bgpa-net
+    volumes:
+      - redis-data:/data
+
+networks:
+  bgpa-net:
+    driver: bridge
+
+volumes:
+  redis-data:
