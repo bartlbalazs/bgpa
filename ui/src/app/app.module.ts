@@ -11,6 +11,7 @@ import { UserStatsComponent } from './user-stats/user-stats.component';
 import { ApiService } from './api.service';
 import { GameListComponent } from './game-list/game-list.component';
 import { PageNavComponent } from './page-nav/page-nav.component';
+import { PreferencesComponent } from './preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageNavComponent } from './page-nav/page-nav.component';
     NavbarComponent,
     UserStatsComponent,
     GameListComponent,
-    PageNavComponent
+    PageNavComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,
