@@ -1,6 +1,14 @@
-<div *ngIf="userId">
-  <h2>{{userId}}</h2>
-  <h3 class="h3 mb-0 text-gray-800">Preferences</h3>
+<div id="userName" class="row" *ngIf="userId">
+  <div class="col-lg-6">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">User</h6>
+      </div>
+      <div class="card-body">
+        <h2>{{userId}}</h2>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="themes" *ngIf="popularities.theme" class="row">
