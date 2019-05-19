@@ -5,8 +5,10 @@
       <input type="text" class="form-control bg-light border-0 small" [(ngModel)]="searchUserId" name="userId"
         type="search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <button class="btn btn-primary" type="submit">
-          <i class="fas fa-search fa-sm"></i>
+
+        <button class="btn btn-primary" type="submit" [disabled]=apiService.busy|async>
+          <span *ngIf=apiService.busy|async class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <i *ngIf=!(apiService.busy|async) class="fas fa-search fa-sm"></i>
         </button>
       </div>
     </div>

@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   statSubscription: Subscription;
   
-  constructor(private apiService: ApiService) { }
+  constructor(public apiService: ApiService) { }
 
   ngOnInit() {
     this.statSubscription = this.apiService.userStats.subscribe(message => {
