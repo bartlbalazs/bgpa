@@ -9,15 +9,21 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public userStats:BehaviorSubject<any> = new BehaviorSubject<any>({});
+  public userStats: BehaviorSubject<any> = new BehaviorSubject<any>({});
+
+  public busy: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   fetchStats(userId: string) {
     if (userId) {
-      this.httpClient.get('/api/stats/' + userId).subscribe((res: any[]) => {
-        if (res['userId']) {
-          this.userStats.next(res)
-        }
-      });
+      this.busy.next(true)
+      this.httpClient.get('/api/stats/' + userId).subscribe(
+        (res: any[]) => {
+          this.busy.next(false)
+          if (res['userId']) {
+            this.userStats.next(res)
+          }
+        },
+        error => this.busy.next(false));
     }
   }
 }

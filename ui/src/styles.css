@@ -2,3 +2,7 @@
 body {
     position: relative;
 }
+
+app-page-nav {
+    position: fixed;
+}
