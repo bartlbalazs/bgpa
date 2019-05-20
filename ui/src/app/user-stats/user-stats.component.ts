@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { Subscription } from 'rxjs';
 import { ChartConfig } from '../shared/ChartConfig'
 import { PopularityData } from '../shared/PopularityData'
+import { Badge } from '../shared/Badge'
 
 @Component({
   selector: 'app-user-stats',
@@ -15,9 +16,10 @@ export class UserStatsComponent implements OnInit, OnDestroy {
 
   statSubscription: Subscription;
 
+  userId: string = null
+  badges: Badge[]
   popularities: any = {}
   selected_items: any = {}
-  userId: string = null
 
   constructor(public apiService: ApiService) { }
 
@@ -30,6 +32,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
     return message => {
       if (message.userId) {
         this.userId = message.userId;
+        this.badges = message.badges;
         this.popularities['theme'] = PopularityData.fromRawData(message.categoryPopularities);
         this.popularities['mechanism'] = PopularityData.fromRawData(message.mechanismPopularities);
         this.popularities['designer'] = PopularityData.fromRawData(message.designerPopularities);

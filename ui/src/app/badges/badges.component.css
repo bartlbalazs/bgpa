@@ -1,0 +1,7 @@
+.badge {
+    border: none;
+}
+
+.badge.card .card-body{
+    padding: 0;
+}
