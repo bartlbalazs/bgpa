@@ -3,6 +3,7 @@ package hu.bartl.bggprofileanalyzer.service;
 import com.google.common.collect.Maps;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import hu.bartl.bggprofileanalyzer.data.Popularity;
+import hu.bartl.bggprofileanalyzer.data.badge.BadgeService;
 import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
 import hu.bartl.bggprofileanalyzer.data.raw.UserStats;
 import hu.bartl.bggprofileanalyzer.stats.AbstractPopularityStatCalculator;
@@ -26,6 +27,8 @@ public class StatsService {
 
     private final Set<AbstractPopularityStatCalculator> statCalculators;
 
+    private final BadgeService badgeService;
+
     public UserStats createStats(String userId) {
 
         UserProfile userProfile = profileDownloader.loadProfile(userId);
@@ -38,6 +41,7 @@ public class StatsService {
         return UserStats.builder()
                 .userId(userProfile.getUserId())
                 .games(games)
+                .badges(badgeService.getBadges(stats))
                 .categoryPopularities(stats.get(CATEGORY))
                 .mechanismPopularities(stats.get(MECHANISM))
                 .designerPopularities(stats.get(DESIGNER))
