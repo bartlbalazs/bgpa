@@ -1,10 +1,10 @@
 package hu.bartl.bggprofileanalyzer.service;
 
+import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
+import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
+import hu.bartl.bggprofileanalyzer.exception.RetriableRemoteApiException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Set;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.annotation.Backoff;
@@ -12,9 +12,7 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import hu.bartl.bggprofileanalyzer.exception.RetriableRemoteApiException;
-import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
-import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +28,7 @@ public class ProfileDownloader {
     @Retryable(
             value = {RetriableRemoteApiException.class},
             maxAttempts = 10,
-            backoff = @Backoff(delay = 5000, multiplier = 2))
+            backoff = @Backoff(delay = 1000, multiplier = 2))
     public UserProfile loadProfile(String userId) {
         log.info("Downloading information about user started: '{}'", userId);
         String profileUrl = String.format(USER_PROFILE_API_ENDPOINT_PATTERN, env.getApiRoot(), userId);
