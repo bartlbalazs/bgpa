@@ -1,6 +1,6 @@
 package hu.bartl.bggprofileanalyzer.controller;
 
-import hu.bartl.bggprofileanalyzer.data.presentation.UserStatsPresentation;
+import hu.bartl.bggprofileanalyzer.data.user.UserStatsPresentation;
 import hu.bartl.bggprofileanalyzer.service.PresentationService;
 import hu.bartl.bggprofileanalyzer.service.StatsService;
 import lombok.extern.slf4j.Slf4j;

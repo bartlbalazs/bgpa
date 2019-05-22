@@ -1,28 +1,25 @@
 package hu.bartl.bggprofileanalyzer.configuration;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.UntypedObjectDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
-import static hu.bartl.bggprofileanalyzer.configuration.XmlParsingConfiguration.Issue205FixedUntypedObjectDeserializer.*;
+import java.io.IOException;
+import java.util.*;
+
+import static hu.bartl.bggprofileanalyzer.configuration.XmlParsingConfiguration.Issue205FixedUntypedObjectDeserializer.getInstance;
 
 @Configuration
 public class XmlParsingConfiguration {
     
     @Bean
+    @Primary
     public XmlMapper xmlMapper() {
         XmlMapper xmlMapper = new XmlMapper();
         SimpleModule module = new SimpleModule().addDeserializer(Object.class, getInstance());

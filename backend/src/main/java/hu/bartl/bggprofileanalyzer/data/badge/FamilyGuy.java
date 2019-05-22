@@ -16,16 +16,6 @@ public class FamilyGuy extends SubdomainBadge {
     }
 
     @Override
-    public String getDisplayName() {
-        return "Family guy";
-    }
-
-    @Override
-    public String getDescription() {
-        return null;
-    }
-
-    @Override
     protected int getDomainThreshold() {
         return BADGE_THRESHOLD;
     }

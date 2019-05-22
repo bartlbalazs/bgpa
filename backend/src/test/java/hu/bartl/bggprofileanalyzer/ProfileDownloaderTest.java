@@ -1,5 +1,11 @@
 package hu.bartl.bggprofileanalyzer;
 
+import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
+import hu.bartl.bggprofileanalyzer.data.user.UserProfile;
+import hu.bartl.bggprofileanalyzer.service.ProfileDownloader;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,14 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
-
-import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
-import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
-import hu.bartl.bggprofileanalyzer.service.ProfileDownloader;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static hu.bartl.bggprofileanalyzer.TestHelper.getTestFileContent;
 import static org.mockito.ArgumentMatchers.any;

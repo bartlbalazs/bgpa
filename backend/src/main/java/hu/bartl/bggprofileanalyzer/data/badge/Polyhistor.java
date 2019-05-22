@@ -21,17 +21,7 @@ public class Polyhistor implements Badge {
     }
 
     @Override
-    public String getDisplayName() {
-        return "Polyhistor";
-    }
-
-    @Override
-    public String getDescription() {
-        return null;
-    }
-
-    @Override
     public boolean isApplicable(Map<Stats, List<Popularity>> stats) {
-        return !stats.get(SUBDOMAIN).stream().filter(s -> s.getGamesRatio() > BADGE_THRESHOLD).findAny().isPresent();
+        return !stats.get(SUBDOMAIN).stream().anyMatch(s -> s.getGamesRatio() > BADGE_THRESHOLD);
     }
 }

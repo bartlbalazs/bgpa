@@ -14,7 +14,7 @@ public abstract class SubdomainBadge implements Badge {
     @Override
     public boolean isApplicable(Map<Stats, List<Popularity>> stats) {
         Optional<Popularity> subdomain = stats.get(SUBDOMAIN).stream().filter(i -> i.getEntityId() == getDomainId()).findFirst();
-        return subdomain.isPresent() ? subdomain.get().getGamesRatio() > getDomainThreshold() : false;
+        return subdomain.isPresent() && subdomain.get().getGamesRatio() > getDomainThreshold();
     }
 
     protected abstract int getDomainThreshold();

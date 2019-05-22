@@ -1,7 +1,7 @@
 package hu.bartl.bggprofileanalyzer.service;
 
 import hu.bartl.bggprofileanalyzer.configuration.EnvironmentInformations;
-import hu.bartl.bggprofileanalyzer.data.raw.UserProfile;
+import hu.bartl.bggprofileanalyzer.data.user.UserProfile;
 import hu.bartl.bggprofileanalyzer.exception.RetriableRemoteApiException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
