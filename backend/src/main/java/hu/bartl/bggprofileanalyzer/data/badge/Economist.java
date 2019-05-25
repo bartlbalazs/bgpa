@@ -3,15 +3,13 @@ package hu.bartl.bggprofileanalyzer.data.badge;
 import hu.bartl.bggprofileanalyzer.stats.Stats;
 import org.springframework.stereotype.Component;
 
-import static hu.bartl.bggprofileanalyzer.stats.Stats.SUBDOMAIN;
-
 @Component
-public class FamilyGuy extends GroupBasedBadge {
+public class Economist extends GroupBasedBadge {
 
-    private static final String ID = "familyGuy";
+    private static final String ID = "economist";
 
-    private static final int FAMILY_GAMES_DOMAIN = 5499;
-    private static final int BADGE_THRESHOLD = 40;
+    private static final int ECONOMIC_GAMES_ID = 1021;
+    private static final int BADGE_THRESHOLD = 15;
 
     @Override
     public String getId() {
@@ -25,11 +23,11 @@ public class FamilyGuy extends GroupBasedBadge {
 
     @Override
     protected int getGroupItemId() {
-        return FAMILY_GAMES_DOMAIN;
+        return ECONOMIC_GAMES_ID;
     }
 
     @Override
     protected Stats getGroup() {
-        return SUBDOMAIN;
+        return Stats.CATEGORY;
     }
 }

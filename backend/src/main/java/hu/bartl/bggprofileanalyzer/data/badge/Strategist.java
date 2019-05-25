@@ -1,9 +1,12 @@
 package hu.bartl.bggprofileanalyzer.data.badge;
 
+import hu.bartl.bggprofileanalyzer.stats.Stats;
 import org.springframework.stereotype.Component;
 
+import static hu.bartl.bggprofileanalyzer.stats.Stats.SUBDOMAIN;
+
 @Component
-public class Strategist extends SubdomainBadge {
+public class Strategist extends GroupBasedBadge {
 
     private static final String ID = "strategist";
 
@@ -16,12 +19,17 @@ public class Strategist extends SubdomainBadge {
     }
 
     @Override
-    protected int getDomainThreshold() {
+    protected int getGroupThreshold() {
         return BADGE_THRESHOLD;
     }
 
     @Override
-    protected int getDomainId() {
+    protected int getGroupItemId() {
         return STRATEGY_GAMES_DOMAIN;
+    }
+
+    @Override
+    protected Stats getGroup() {
+        return SUBDOMAIN;
     }
 }

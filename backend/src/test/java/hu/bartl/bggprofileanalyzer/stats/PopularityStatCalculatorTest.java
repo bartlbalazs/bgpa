@@ -33,7 +33,7 @@ public class PopularityStatCalculatorTest {
         CategoryPopularityStatCalculator underTest = new CategoryPopularityStatCalculator();
         List<Popularity> result = underTest.calculate(boardGames);
         assertThat(result.get(0).getEntityName(), is("Economic"));
-        assertThat(result.size(), is(46));
+        assertThat(result.size(), is(47));
     }
     
     @Test
