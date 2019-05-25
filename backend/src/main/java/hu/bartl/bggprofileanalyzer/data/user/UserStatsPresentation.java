@@ -1,17 +1,19 @@
-package hu.bartl.bggprofileanalyzer.data.presentation;
+package hu.bartl.bggprofileanalyzer.data.user;
 
 import hu.bartl.bggprofileanalyzer.data.Popularity;
-import hu.bartl.bggprofileanalyzer.data.raw.UserStats;
+import hu.bartl.bggprofileanalyzer.data.badge.BadgePresentation;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder(toBuilder = true)
 public class UserStatsPresentation {
     private final String userId;
 
+    private final Set<BadgePresentation> badges;
     private final List<Popularity> categoryPopularities;
     private final List<Popularity> mechanismPopularities;
     private final List<Popularity> designerPopularities;

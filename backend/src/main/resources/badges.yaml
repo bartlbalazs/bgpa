@@ -1,0 +1,35 @@
+- id: familyGuy
+  displayName: Family guy
+  description:
+
+- id: partyFace
+  displayName: Party face
+  description:
+
+- id: polyhistor
+  displayName: Polyhistor
+  description:
+
+- id: storyTeller
+  displayName: Storyteller
+  description:
+
+- id: strategist
+  displayName: Strategist
+  description:
+
+- id: warlord
+  displayName: Warlord
+  description:
+
+- id: fighter
+  displayName: Fighter
+  description:
+
+- id: economist
+  displayName: Economist
+  description:
+
+- id: cardGames
+  displayName: Master of cards
+  description:

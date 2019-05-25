@@ -26,7 +26,7 @@ public abstract class AbstractPopularityStatCalculator {
         Map<NamedEntity, Set<NamedEntityWithPicture>> popularities = boardGames.stream()
                 .map(this::mapPropertiesToGameIds)
                 .flatMap(Collection::stream)
-                .collect(Collectors.groupingBy(c -> c.getFirst(), Collectors.mapping(Pair::getSecond, Collectors.toSet())));
+                .collect(Collectors.groupingBy(Pair::getFirst, Collectors.mapping(Pair::getSecond, Collectors.toSet())));
 
 
         return popularities.entrySet().stream()
@@ -59,5 +59,7 @@ public abstract class AbstractPopularityStatCalculator {
     protected boolean filterEntity(NamedEntity entity) {
         return true;
     }
+
+    public abstract Stats getStatId();
 }
 

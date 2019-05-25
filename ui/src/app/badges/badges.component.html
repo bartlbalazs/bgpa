@@ -1,0 +1,16 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Badges</h6>
+  </div>
+  <div class="card-body">
+
+
+    <div *ngFor="let badge of badges" class="card badge" style="width: 9rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{badge.displayName}}</h5>
+        <p class="card-text">{{badge.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

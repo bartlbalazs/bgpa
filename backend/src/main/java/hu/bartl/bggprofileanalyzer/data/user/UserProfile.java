@@ -1,4 +1,4 @@
-package hu.bartl.bggprofileanalyzer.data.raw;
+package hu.bartl.bggprofileanalyzer.data.user;
 
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import lombok.Data;

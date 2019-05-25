@@ -1,11 +1,13 @@
 package hu.bartl.bggprofileanalyzer.service;
 
 import hu.bartl.bggprofileanalyzer.configuration.PresentationConfiguration;
-import hu.bartl.bggprofileanalyzer.data.presentation.UserStatsPresentation;
-import hu.bartl.bggprofileanalyzer.data.raw.UserStats;
+import hu.bartl.bggprofileanalyzer.data.user.UserStats;
+import hu.bartl.bggprofileanalyzer.data.user.UserStatsPresentation;
 import hu.bartl.bggprofileanalyzer.stats.PopularityStatAggregator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -15,8 +17,15 @@ public class PresentationService {
 
     private PresentationConfiguration configuration;
 
+    private Badge2PresentationConverter badgeConverter;
+
     public UserStatsPresentation rawStatsToPresentation(UserStats rawStats) {
         UserStatsPresentation.UserStatsPresentationBuilder presentationBuilder = UserStatsPresentation.fromRawStats(rawStats).toBuilder();
+
+        presentationBuilder.badges(rawStats.getBadges()
+                .stream()
+                .map(b -> badgeConverter.convert(b))
+                .collect(Collectors.toSet()));
 
         presentationBuilder.artistPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getArtistPopularities(),
                 configuration.getOtherArtistMaxRatio(),

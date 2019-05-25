@@ -12,6 +12,7 @@ import { ApiService } from './api.service';
 import { GameListComponent } from './game-list/game-list.component';
 import { PageNavComponent } from './page-nav/page-nav.component';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { BadgesComponent } from './badges/badges.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PreferencesComponent } from './preferences/preferences.component';
     UserStatsComponent,
     GameListComponent,
     PageNavComponent,
-    PreferencesComponent
+    PreferencesComponent,
+    BadgesComponent
   ],
   imports: [
     BrowserModule,
