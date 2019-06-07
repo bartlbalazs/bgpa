@@ -44,9 +44,7 @@ public class BoardGameDownloader {
         int idPointer = 0;
         while (idPointer < idList.size()) {
             int firstIdIndex = idPointer;
-            executorService.execute(() -> {
-                result.addAll(loadGames(idList, firstIdIndex, pageSize));
-            });
+            executorService.execute(() -> result.addAll(loadGames(idList, firstIdIndex, pageSize)));
             idPointer += pageSize;
         }
         executorService.shutdown();

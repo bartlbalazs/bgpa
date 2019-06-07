@@ -19,7 +19,7 @@ import java.util.Set;
 @Slf4j
 public class ProfileDownloader {
     
-    private final String USER_PROFILE_API_ENDPOINT_PATTERN = "%s/collection/%s?own=1";
+    private static final String USER_PROFILE_API_ENDPOINT_PATTERN = "%s/collection/%s?own=1";
     private final BoardGameDownloader boardGameDownloader;
     private final EnvironmentInformations env;
     private final RestTemplate restTemplate;
