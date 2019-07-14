@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartConfig } from '../shared/ChartConfig';
 
 @Component({
@@ -6,8 +6,7 @@ import { ChartConfig } from '../shared/ChartConfig';
   templateUrl: './preferences.component.html',
   styleUrls: ['./preferences.component.css']
 })
-export class PreferencesComponent {
-
+export class PreferencesComponent implements OnChanges {
   constructor() { }
 
   @Input()
@@ -24,5 +23,9 @@ export class PreferencesComponent {
   onSelectFromChart($event: any) {
     let id = $event.name || $event
     this.selected_items = this.preferences.fullData[id]
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.selected_items = null
   }
 }
