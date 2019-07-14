@@ -8,6 +8,7 @@ services:
       - bgpa-net
     links:
       - "redis-server:redis"
+    restart: always
     depends_on:
       - redis-server
 
@@ -23,6 +24,7 @@ services:
     links:
       - "redis-server:redis"
       - "bgpa-backend:backend"
+    restart: always
     depends_on:
       - redis-server
       - bgpa-backend
@@ -35,6 +37,7 @@ services:
       - bgpa-net
     volumes:
       - redis-data:/data
+    restart: always
 
 networks:
   bgpa-net:
