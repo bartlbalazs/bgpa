@@ -20,6 +20,9 @@ public class PresentationConfiguration {
     @Value("${app.mechanic-group-max-ratio}")
     private int otherMechanicMaxRatio;
 
+    @Value("${app.family-group-max-ratio}")
+    private int otherFamilyMaxRatio;
+
     @Value("${app.subdomain-group-max-ratio}")
     private int otherSubdomainMaxRatio;
 
@@ -28,4 +31,5 @@ public class PresentationConfiguration {
 
     @Value("${app.subdomain-minimal_group_size}")
     private int minimalSubdomainGroupSize;
+
 }

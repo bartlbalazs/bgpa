@@ -28,9 +28,10 @@ public abstract class AbstractPopularityStatCalculator {
                 .flatMap(Collection::stream)
                 .collect(Collectors.groupingBy(Pair::getFirst, Collectors.mapping(Pair::getSecond, Collectors.toSet())));
 
+        int allPopularitiesCount = popularities.entrySet().stream().mapToInt(p -> p.getValue().size()).sum();
 
         return popularities.entrySet().stream()
-                .map(c -> mapToPopularity(c, boardGames.size()))
+                .map(c -> mapToPopularity(c, allPopularitiesCount))
                 .sorted(comparingInt(Popularity::getGamesCount).reversed())
                 .collect(Collectors.toList());
     }
@@ -47,12 +48,12 @@ public abstract class AbstractPopularityStatCalculator {
                 .collect(Collectors.toSet());
     }
 
-    private Popularity mapToPopularity(Map.Entry<NamedEntity, Set<NamedEntityWithPicture>> entry, int allGamesCount) {
+    private Popularity mapToPopularity(Map.Entry<NamedEntity, Set<NamedEntityWithPicture>> entry, int allPopularitiesCount) {
         return Popularity.builder()
                 .entityId(entry.getKey().getId())
                 .entityName(entry.getKey().getName())
                 .gamesInGroup(entry.getValue())
-                .gamesRatio(entry.getValue().size() * 100.0 / allGamesCount)
+                .gamesRatio(entry.getValue().size() * 100.0 / allPopularitiesCount)
                 .build();
     }
 

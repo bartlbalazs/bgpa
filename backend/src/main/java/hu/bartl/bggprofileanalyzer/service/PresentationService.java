@@ -40,7 +40,7 @@ public class PresentationService {
                 configuration.getMinimalGroupSize()));
 
         presentationBuilder.familyPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getFamilyPopularities(),
-                configuration.getOthersMaxRatio(),
+                configuration.getOtherFamilyMaxRatio(),
                 configuration.getMinimalGroupSize()));
 
         presentationBuilder.mechanismPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getMechanismPopularities(),

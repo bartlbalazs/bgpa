@@ -22,6 +22,6 @@ public class Polyhistor implements Badge {
 
     @Override
     public boolean isApplicable(Map<Stats, List<Popularity>> stats) {
-        return !stats.get(SUBDOMAIN).stream().anyMatch(s -> s.getGamesRatio() > BADGE_THRESHOLD);
+        return stats.get(SUBDOMAIN).stream().noneMatch(s -> s.getGamesRatio() > BADGE_THRESHOLD);
     }
 }

@@ -14,7 +14,7 @@ public class PopularityStatAggregator {
 
     private static final String OTHER_GROUP_NAME = "Other";
 
-    public List<Popularity> aggregateSmallGroupsAsOthers(List<Popularity> rawPopularities, int otherGroupMaxPercentage, int minimal_group_size) {
+    public List<Popularity> aggregateSmallGroupsAsOthers(List<Popularity> rawPopularities, int otherGroupMaxPercentage, int minimalGroupSize) {
         List<Popularity> result = Lists.newArrayList(rawPopularities);
 
         List<Integer> gamesInGroups = rawPopularities.stream()
@@ -49,10 +49,10 @@ public class PopularityStatAggregator {
         }
 
         Set<Popularity> smallerThanMinimalGroups = result.stream()
-                .filter(g -> g.getGamesCount() < minimal_group_size)
+                .filter(g -> g.getGamesCount() < minimalGroupSize)
                 .collect(Collectors.toSet());
 
-        if (smallerThanMinimalGroups.size() > 0) {
+        if (!smallerThanMinimalGroups.isEmpty()) {
             aggregateGroupsAsOther(smallerThanMinimalGroups);
             result.removeAll(smallerThanMinimalGroups);
             result.add(aggregateGroupsAsOther(smallerThanMinimalGroups));
@@ -67,7 +67,10 @@ public class PopularityStatAggregator {
     }
 
     private Popularity findOtherGroup(List<Popularity> popularities) {
-        return popularities.stream().filter(p -> OTHER_GROUP_NAME.equals(p.getEntityName())).findFirst().get();
+        return popularities.stream()
+                .filter(p -> OTHER_GROUP_NAME.equals(p.getEntityName()))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format("No \"others\" group present in popularities: %s", popularities)));
     }
 
     private Popularity aggregateGroupsAsOther(Set<Popularity> smallGroups) {
@@ -76,6 +79,6 @@ public class PopularityStatAggregator {
                         .gamesInGroup(Sets.union(g1.getGamesInGroup(), g2.getGamesInGroup()))
                         .gamesRatio(g1.getGamesRatio() + g2.getGamesRatio())
                         .build()
-        ).get();
+        ).orElseThrow(() -> new IllegalArgumentException(String.format("Cannot aggregate small groups as \"others\" group: %s", smallGroups)));
     }
 }

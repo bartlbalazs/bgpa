@@ -2,16 +2,17 @@ version: '3'
 
 services:
   bgpa-backend:
-    image: 'bartlbalazs/bgpa-backend'
+    image: 'bartlbalazs/bgpa-backend:latest'
     networks:
       - bgpa-net
     links:
       - "redis-server:redis"
+    restart: always
     depends_on:
       - redis-server
 
   bgpa-ui:
-    image: 'bartlbalazs/bgpa-ui'
+    image: 'bartlbalazs/bgpa-ui:latest'
     expose:
       - "80"
     ports:
@@ -21,6 +22,7 @@ services:
     links:
       - "redis-server:redis"
       - "bgpa-backend:backend"
+    restart: always
     depends_on:
       - redis-server
       - bgpa-backend
@@ -33,6 +35,7 @@ services:
       - bgpa-net
     volumes:
       - redis-data:/data
+    restart: always
 
 networks:
   bgpa-net:

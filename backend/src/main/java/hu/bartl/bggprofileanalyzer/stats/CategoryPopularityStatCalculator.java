@@ -15,7 +15,7 @@ public class CategoryPopularityStatCalculator extends AbstractPopularityStatCalc
 
     @Override
     protected boolean filterEntity(NamedEntity entity) {
-        return !EXPANSION_CATEGORY_ID.equals(entity.getId());
+        return !EXPANSION_CATEGORY_ID.equals(Long.valueOf(entity.getId()));
     }
 
     @Override

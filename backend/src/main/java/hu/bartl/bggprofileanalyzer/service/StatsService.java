@@ -32,7 +32,7 @@ public class StatsService {
     public UserStats createStats(String userId) {
 
         UserProfile userProfile = profileDownloader.loadProfile(userId);
-        Set<BoardGame> games = profileDownloader.loadProfile(userId).getBoardGames();
+        Set<BoardGame> games = userProfile.getBoardGames();
 
         Map<Stats, List<Popularity>> stats = Maps.newHashMap();
         statCalculators.forEach(c -> stats.put(c.getStatId(), c.calculate(games)));

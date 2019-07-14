@@ -31,7 +31,8 @@ public class XmlParsingConfiguration {
     public static class Issue205FixedUntypedObjectDeserializer extends UntypedObjectDeserializer {
         
         private static final Issue205FixedUntypedObjectDeserializer INSTANCE = new Issue205FixedUntypedObjectDeserializer();
-        
+
+        @Deprecated
         private Issue205FixedUntypedObjectDeserializer() {}
         
         public static Issue205FixedUntypedObjectDeserializer getInstance() {
