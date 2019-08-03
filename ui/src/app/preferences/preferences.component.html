@@ -1,5 +1,5 @@
 <div class="row" *ngIf="preferences">
-  <div class="col-lg-6">
+  <div class="col-xl-6">
     <div class="card shadow mb-4">
   
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -18,7 +18,7 @@
     </div>
   </div>
   
-  <div class="col-lg-6 game-list-panel">
+  <div class="col-xl-6 game-list-panel">
     <app-game-list *ngIf="selected_items" [listOf]="selected_items.name" [games]="selected_items.gamesInGroup"
       [maxHeight]="chartConfig.view[1]"></app-game-list>
   </div>
