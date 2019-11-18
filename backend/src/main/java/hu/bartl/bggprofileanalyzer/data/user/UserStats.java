@@ -3,6 +3,7 @@ package hu.bartl.bggprofileanalyzer.data.user;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.badge.Badge;
+import hu.bartl.bggprofileanalyzer.data.summary.Summary;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,9 +15,9 @@ import java.util.Set;
 public class UserStats {
 
     private final String userId;
-    private final Set<BoardGame> games;
-
+    private final Summary summary;
     private final Set<Badge> badges;
+    private final Set<BoardGame> games;
 
     private final List<Popularity> categoryPopularities;
     private final List<Popularity> mechanismPopularities;
