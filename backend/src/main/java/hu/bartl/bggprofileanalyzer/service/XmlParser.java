@@ -27,15 +27,15 @@ public class XmlParser {
     private BoardGame parseBoardGame(Map<?, ?> bg) {
         BoardGame.BoardGameBuilder gameBuilder =
                 BoardGame.builder()
-                        .id(Integer.valueOf((String) bg.get("objectid")))
+                        .id(Integer.parseInt((String)bg.get("objectid")))
                         .name(parseName(bg.get("name")))
-                        .yearpublished(Integer.valueOf((String) bg.get("yearpublished")))
-                        .minplayers(Integer.valueOf((String) bg.get("minplayers")))
-                        .maxplayers(Integer.valueOf((String) bg.get("maxplayers")))
-                        .playingtime(Integer.valueOf((String) bg.get("playingtime")))
-                        .minplaytime(Integer.valueOf((String) bg.get("minplaytime")))
-                        .maxplaytime(Integer.valueOf((String) bg.get("maxplaytime")))
-                        .age(Integer.valueOf((String) bg.get("age")))
+                        .yearpublished(Integer.parseInt((String) bg.get("yearpublished")))
+                        .minplayers(Integer.parseInt((String) bg.get("minplayers")))
+                        .maxplayers(Integer.parseInt((String) bg.get("maxplayers")))
+                        .playingtime(Integer.parseInt((String) bg.get("playingtime")))
+                        .minplaytime(Integer.parseInt((String) bg.get("minplaytime")))
+                        .maxplaytime(Integer.parseInt((String) bg.get("maxplaytime")))
+                        .age(Integer.parseInt((String) bg.get("age")))
                         .thumbnail((String) bg.get("thumbnail"))
                         .image((String) bg.get("image"))
                         .artists(parseNameEntities(bg.get("boardgameartist")))
@@ -68,7 +68,7 @@ public class XmlParser {
 
     private NamedEntity parseNamedEntity(Object entityProperty) {
         Map<String, String> entityMap = (Map) entityProperty;
-        return NamedEntity.builder().id(Integer.valueOf(entityMap.get("objectid"))).name(entityMap.get("")).build();
+        return NamedEntity.builder().id(Integer.parseInt(entityMap.get("objectid"))).name(entityMap.get("")).build();
     }
 
     private String parseName(Object names) {
@@ -93,9 +93,9 @@ public class XmlParser {
             }
 
         }
-        builder.userRating(Double.valueOf((String) ratings.get("usersrated")))
-                .weight(Double.valueOf((String) ratings.get("averageweight")))
-                .owned(Integer.valueOf((String) ratings.get("owned")));
+        builder.userRating(Double.parseDouble((String) ratings.get("usersrated")))
+                .weight(Double.parseDouble((String) ratings.get("averageweight")))
+                .owned(Integer.parseInt((String) ratings.get("owned")));
     }
 
     private Optional<Map<?, ?>> filterForType(List ranks, String typeName) {
