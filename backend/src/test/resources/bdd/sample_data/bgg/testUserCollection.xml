@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<items totalitems="60" termsofuse="https://boardgamegeek.com/xmlapi/termsofuse"
+       pubdate="Tue, 12 Nov 2019 11:50:25 +0000">
+    <item objecttype="thing" objectid="192458" subtype="boardgame" collid="45278738">
+        <name sortindex="1">51st State: Master Set</name>
+        <yearpublished>2016</yearpublished>
+        <image>https://cf.geekdo-images.com/original/img/FikdHVDtGfaFsStTcuw0LwiFTqo=/0x0/pic2945432.jpg</image>
+        <thumbnail>https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg
+        </thumbnail>
+        <stats minplayers="1" maxplayers="4" minplaytime="60" maxplaytime="90" playingtime="90" numowned="6123">
+            <rating value="7">
+                <usersrated value="3992"/>
+                <average value="7.68156"/>
+                <bayesaverage value="7.0959"/>
+                <stddev value="1.27606"/>
+                <median value="0"/>
+            </rating>
+        </stats>
+        <status own="1" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="0" preordered="0"
+                lastmodified="2017-11-29 06:02:34"/>
+        <numplays>0</numplays>
+    </item>
+    <item objecttype="thing" objectid="119337" subtype="boardgame" collid="45278810">
+        <name sortindex="1">Aeroplanes: Aviation Ascendant</name>
+        <yearpublished>2012</yearpublished>
+        <image>https://cf.geekdo-images.com/original/img/6MRnPkNGpzaJOX9w83bzID-0iF0=/0x0/pic1221593.jpg</image>
+        <thumbnail>https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg
+        </thumbnail>
+        <stats minplayers="3" maxplayers="5" minplaytime="120" maxplaytime="120" playingtime="120" numowned="1110">
+            <rating value="N/A">
+                <usersrated value="711"/>
+                <average value="6.61988"/>
+                <bayesaverage value="5.88391"/>
+                <stddev value="1.42551"/>
+                <median value="0"/>
+            </rating>
+        </stats>
+        <status own="1" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="0" preordered="0"
+                lastmodified="2017-09-12 02:49:37"/>
+        <numplays>0</numplays>
+    </item>
+</items>
