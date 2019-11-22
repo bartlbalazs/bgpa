@@ -1,6 +1,7 @@
 package hu.bartl.bggprofileanalyzer.service;
 
 import hu.bartl.bggprofileanalyzer.configuration.PresentationConfiguration;
+import hu.bartl.bggprofileanalyzer.data.summary.SummaryPresentation;
 import hu.bartl.bggprofileanalyzer.data.user.UserStats;
 import hu.bartl.bggprofileanalyzer.data.user.UserStatsPresentation;
 import hu.bartl.bggprofileanalyzer.stats.PopularityStatAggregator;
@@ -21,6 +22,8 @@ public class PresentationService {
 
     public UserStatsPresentation rawStatsToPresentation(UserStats rawStats) {
         UserStatsPresentation.UserStatsPresentationBuilder presentationBuilder = UserStatsPresentation.fromRawStats(rawStats).toBuilder();
+
+        presentationBuilder.summary(SummaryPresentation.fromRawSummary(rawStats.getSummary()));
 
         presentationBuilder.badges(rawStats.getBadges()
                 .stream()
