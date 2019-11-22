@@ -7,11 +7,11 @@ import lombok.Data;
 @Builder
 public class Summary {
 
-    private long allItemsCount;
+    private long gamesCount;
 
     private long expansionsCount;
 
-    private long ksItemsCount;
+    private double averageGameWeight;
 
     long minutesToPlay;
 }

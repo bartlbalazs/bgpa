@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Log
 @AllArgsConstructor
@@ -16,24 +18,24 @@ public class SummaryService {
 
     private static final int EXPANSION_CATEGORY_ID = 1042;
 
-    private static final int KICKSTARTER_GAMES_FAMILY_ID = 8374;
-
     public Summary summarize(Set<BoardGame> games) {
 
-        long allItemsCount = games.size();
 
-        long minutesToPlay = games.stream().filter(isExpansionPredicate().negate()).mapToInt(BoardGame::getMaxplaytime).sum();
-
+        long gamesCount = getBoardGameStream(games).count();
         long expansionsCount = games.stream().filter(isExpansionPredicate()).count();
-
-        long ksItemsCount = games.stream().filter(isKsPredicate()).count();
+        long minutesToPlay = getBoardGameStream(games).mapToInt(BoardGame::getMaxplaytime).sum();
+        Double averageGameWeight = getBoardGameStream(games).collect(Collectors.averagingDouble(BoardGame::getWeight));
 
         return Summary.builder()
-                .allItemsCount(allItemsCount)
+                .gamesCount(gamesCount)
                 .expansionsCount(expansionsCount)
-                .ksItemsCount(ksItemsCount)
                 .minutesToPlay(minutesToPlay)
+                .averageGameWeight(averageGameWeight)
                 .build();
+    }
+
+    private Stream<BoardGame> getBoardGameStream(Set<BoardGame> games) {
+        return games.stream().filter(isExpansionPredicate().negate());
     }
 
     private Predicate<BoardGame> isExpansionPredicate() {
@@ -43,16 +45,6 @@ public class SummaryService {
                 return false;
             }
             return categories.stream().anyMatch(c -> EXPANSION_CATEGORY_ID == c.getId());
-        };
-    }
-
-    private Predicate<BoardGame> isKsPredicate() {
-        return i -> {
-            Set<NamedEntity> families = i.getFamilies();
-            if (families == null || families.isEmpty()) {
-                return false;
-            }
-            return families.stream().anyMatch(c -> KICKSTARTER_GAMES_FAMILY_ID == c.getId());
         };
     }
 }

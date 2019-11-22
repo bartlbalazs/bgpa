@@ -2,7 +2,7 @@ package hu.bartl.bggprofileanalyzer.data.user;
 
 import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.badge.BadgePresentation;
-import hu.bartl.bggprofileanalyzer.data.summary.Summary;
+import hu.bartl.bggprofileanalyzer.data.summary.SummaryPresentation;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,7 +13,7 @@ import java.util.Set;
 @Builder(toBuilder = true)
 public class UserStatsPresentation {
     private final String userId;
-    private final Summary summary;
+    private final SummaryPresentation summary;
 
     private final Set<BadgePresentation> badges;
     private final List<Popularity> categoryPopularities;
@@ -26,7 +26,6 @@ public class UserStatsPresentation {
     public static UserStatsPresentation fromRawStats(UserStats userStats) {
         return UserStatsPresentation.builder()
                 .userId(userStats.getUserId())
-                .summary(userStats.getSummary())
                 .artistPopularities(userStats.getArtistPopularities())
                 .categoryPopularities(userStats.getCategoryPopularities())
                 .designerPopularities(userStats.getDesignerPopularities())

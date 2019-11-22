@@ -1,5 +1,12 @@
 {
   "userId": "testUser",
+  "summary": {
+    "gamesCount": 2,
+    "expansionsCount": 0,
+    "allItemsCount": 2,
+    "averageGameWeight": 2.93645,
+    "minutesToPlay": 210
+  },
   "badges": [
     {
       "id": "strategist",

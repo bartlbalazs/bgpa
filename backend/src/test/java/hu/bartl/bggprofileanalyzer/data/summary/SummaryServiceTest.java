@@ -19,9 +19,7 @@ public class SummaryServiceTest {
     private SummaryService underTest;
 
     private static final int EXPANSION_CATEGORY_ID = 1042;
-
-    private static final int KICKSTARTER_GAMES_FAMILY_ID = 8374;
-
+    private static final ImmutableSet<NamedEntity> EXPANSION = ImmutableSet.of(NamedEntity.builder().id(EXPANSION_CATEGORY_ID).build());
 
     @Before
     public void setup() {
@@ -29,34 +27,19 @@ public class SummaryServiceTest {
     }
 
     @Test
-    public void shouldCountExpansions() {
+    public void shouldCountGamesAndExpansions() {
         BoardGame game1 = BoardGame.builder().id(1).build();
         BoardGame game2 = BoardGame.builder().id(2).build();
         BoardGame expansion = BoardGame.builder().id(3)
-                .categories(ImmutableSet.of(NamedEntity.builder().id(EXPANSION_CATEGORY_ID).build()))
+                .categories(EXPANSION)
                 .build();
 
         Set<BoardGame> games = ImmutableSet.of(game1, game2, expansion);
 
         Summary summary = underTest.summarize(games);
 
-        assertThat(summary.getAllItemsCount(), is(3L));
+        assertThat(summary.getGamesCount(), is(2L));
         assertThat(summary.getExpansionsCount(), is(1L));
-    }
-
-    @Test
-    public void shouldCountKsGames() {
-        BoardGame game1 = BoardGame.builder().id(1).build();
-        BoardGame expansion = BoardGame.builder().id(2)
-                .families(ImmutableSet.of(NamedEntity.builder().id(KICKSTARTER_GAMES_FAMILY_ID).build()))
-                .build();
-
-        Set<BoardGame> games = ImmutableSet.of(game1, expansion);
-
-        Summary summary = underTest.summarize(games);
-
-        assertThat(summary.getAllItemsCount(), is(2L));
-        assertThat(summary.getKsItemsCount(), is(1L));
     }
 
     @Test
@@ -64,7 +47,7 @@ public class SummaryServiceTest {
         BoardGame game1 = BoardGame.builder().id(1).maxplaytime(1).build();
         BoardGame game2 = BoardGame.builder().id(2).maxplaytime(3).build();
         BoardGame expansion = BoardGame.builder().id(3).maxplaytime(7)
-                .categories(ImmutableSet.of(NamedEntity.builder().id(EXPANSION_CATEGORY_ID).build()))
+                .categories(EXPANSION)
                 .build();
 
         Set<BoardGame> games = ImmutableSet.of(game1, game2, expansion);
@@ -72,5 +55,20 @@ public class SummaryServiceTest {
         Summary summary = underTest.summarize(games);
 
         assertThat(summary.getMinutesToPlay(), is(4L));
+    }
+
+    @Test
+    public void shouldCalculateAvgGameWeight() {
+        BoardGame game1 = BoardGame.builder().id(1).weight(1.5).build();
+        BoardGame game2 = BoardGame.builder().id(2).weight(3.5).build();
+        BoardGame expansion = BoardGame.builder().id(3).weight(5)
+                .categories(EXPANSION)
+                .build();
+
+        Set<BoardGame> games = ImmutableSet.of(game1, game2, expansion);
+
+        Summary summary = underTest.summarize(games);
+
+        assertThat(summary.getAverageGameWeight(), is(2.5));
     }
 }
