@@ -26,4 +26,5 @@ public class UserStats {
     private final List<Popularity> artistPopularities;
     private final List<Popularity> familyPopularities;
 
+    private final List<Popularity> weightPopularities;
 }

@@ -9,6 +9,7 @@ import hu.bartl.bggprofileanalyzer.data.user.UserProfile;
 import hu.bartl.bggprofileanalyzer.data.user.UserStats;
 import hu.bartl.bggprofileanalyzer.stats.AbstractPopularityStatCalculator;
 import hu.bartl.bggprofileanalyzer.stats.Stats;
+import hu.bartl.bggprofileanalyzer.stats.WeightStatCalculator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,8 @@ public class StatsService {
 
     private final SummaryService summaryService;
 
+    private final WeightStatCalculator weightStatCalculator;
+
     public UserStats createStats(String userId) {
 
         UserProfile userProfile = profileDownloader.loadProfile(userId);
@@ -39,7 +42,6 @@ public class StatsService {
 
         Map<Stats, List<Popularity>> stats = Maps.newHashMap();
         statCalculators.forEach(c -> stats.put(c.getStatId(), c.calculate(games)));
-
 
         return UserStats.builder()
                 .userId(userProfile.getUserId())
@@ -52,6 +54,7 @@ public class StatsService {
                 .subDomainPopularities(stats.get(SUBDOMAIN))
                 .artistPopularities(stats.get(ARTIST))
                 .familyPopularities(stats.get(FAMILY))
+                .weightPopularities(weightStatCalculator.calculate(games))
                 .build();
     }
 }

@@ -4,6 +4,7 @@ import hu.bartl.bggprofileanalyzer.configuration.PresentationConfiguration;
 import hu.bartl.bggprofileanalyzer.data.summary.SummaryPresentation;
 import hu.bartl.bggprofileanalyzer.data.user.UserStats;
 import hu.bartl.bggprofileanalyzer.data.user.UserStatsPresentation;
+import hu.bartl.bggprofileanalyzer.stats.GroupStatMissingDataHelper;
 import hu.bartl.bggprofileanalyzer.stats.PopularityStatAggregator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ public class PresentationService {
     private PresentationConfiguration configuration;
 
     private Badge2PresentationConverter badgeConverter;
+
+    private GroupStatMissingDataHelper groupStatMissingDataHelper;
 
     public UserStatsPresentation rawStatsToPresentation(UserStats rawStats) {
         UserStatsPresentation.UserStatsPresentationBuilder presentationBuilder = UserStatsPresentation.fromRawStats(rawStats).toBuilder();
@@ -53,6 +56,8 @@ public class PresentationService {
         presentationBuilder.subDomainPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getSubDomainPopularities(),
                 configuration.getOtherSubdomainMaxRatio(),
                 configuration.getMinimalSubdomainGroupSize()));
+
+        presentationBuilder.weightPopularities(groupStatMissingDataHelper.fillData(rawStats.getWeightPopularities(), 0.2));
 
         return presentationBuilder.build();
     }

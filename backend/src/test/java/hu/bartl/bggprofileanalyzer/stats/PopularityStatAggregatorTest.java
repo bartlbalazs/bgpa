@@ -4,10 +4,12 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import hu.bartl.bggprofileanalyzer.data.NamedEntityWithPicture;
 import hu.bartl.bggprofileanalyzer.data.Popularity;
+import org.checkerframework.checker.nullness.Opt;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.hamcrest.core.Is.is;
@@ -69,7 +71,7 @@ public class PopularityStatAggregatorTest {
     }
 
     private Popularity buildPopularity(int ratio) {
-        return Popularity.builder().entityId(ratio)
+        return Popularity.builder().entityId(Optional.of(ratio))
                 .entityName("G_" + ratio).gamesInGroup(groupOfNGames(ratio)).gamesRatio(Double.valueOf(ratio)).build();
     }
 

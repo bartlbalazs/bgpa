@@ -23,6 +23,8 @@ public class UserStatsPresentation {
     private final List<Popularity> artistPopularities;
     private final List<Popularity> familyPopularities;
 
+    private final List<Popularity> weightPopularities;
+
     public static UserStatsPresentation fromRawStats(UserStats userStats) {
         return UserStatsPresentation.builder()
                 .userId(userStats.getUserId())
@@ -32,6 +34,7 @@ public class UserStatsPresentation {
                 .familyPopularities(userStats.getFamilyPopularities())
                 .mechanismPopularities(userStats.getMechanismPopularities())
                 .subDomainPopularities(userStats.getSubDomainPopularities())
+                .weightPopularities(userStats.getWeightPopularities())
                 .build();
     }
 }
