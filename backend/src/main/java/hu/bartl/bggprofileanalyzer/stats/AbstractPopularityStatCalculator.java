@@ -7,10 +7,7 @@ import hu.bartl.bggprofileanalyzer.data.Popularity;
 import lombok.AllArgsConstructor;
 import org.springframework.data.util.Pair;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -50,7 +47,7 @@ public abstract class AbstractPopularityStatCalculator {
 
     private Popularity mapToPopularity(Map.Entry<NamedEntity, Set<NamedEntityWithPicture>> entry, int allPopularitiesCount) {
         return Popularity.builder()
-                .entityId(entry.getKey().getId())
+                .entityId(Optional.of(entry.getKey().getId()))
                 .entityName(entry.getKey().getName())
                 .gamesInGroup(entry.getValue())
                 .gamesRatio(entry.getValue().size() * 100.0 / allPopularitiesCount)

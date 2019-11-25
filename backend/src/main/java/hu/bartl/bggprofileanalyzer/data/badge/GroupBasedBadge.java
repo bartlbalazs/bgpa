@@ -11,7 +11,10 @@ public abstract class GroupBasedBadge implements Badge {
 
     @Override
     public boolean isApplicable(Map<Stats, List<Popularity>> stats) {
-        Optional<Popularity> subdomain = stats.get(getGroup()).stream().filter(i -> i.getEntityId() == getGroupItemId()).findFirst();
+        Optional<Popularity> subdomain = stats.get(getGroup())
+                .stream()
+                .filter(i -> i.getEntityId().orElseThrow(() -> new RuntimeException("GroupBased badge not applicable for input.")) == getGroupItemId())
+                .findFirst();
         return subdomain.isPresent() && subdomain.get().getGamesRatio() > getGroupThreshold();
     }
 

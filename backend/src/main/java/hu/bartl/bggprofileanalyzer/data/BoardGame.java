@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Data
-@Builder
+@Builder(toBuilder = true)
 public class BoardGame implements Serializable {
     
     private int id;

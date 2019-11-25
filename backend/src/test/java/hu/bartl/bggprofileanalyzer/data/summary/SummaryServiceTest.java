@@ -3,6 +3,7 @@ package hu.bartl.bggprofileanalyzer.data.summary;
 import com.google.common.collect.ImmutableSet;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import hu.bartl.bggprofileanalyzer.data.NamedEntity;
+import hu.bartl.bggprofileanalyzer.data.StreamHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +24,7 @@ public class SummaryServiceTest {
 
     @Before
     public void setup() {
-        underTest = new SummaryService();
+        underTest = new SummaryService(new StreamHelper());
     }
 
     @Test

@@ -29,4 +29,13 @@ public class NamedEntityWithPicture extends NamedEntity {
     public int hashCode() {
         return Objects.hash(super.hashCode(), getThumbnail());
     }
+
+    @Override
+    public String toString() {
+        return "NamedEntityWithPicture{" +
+                "id='" + this.getId() + "\'," +
+                "name='" + this.getName() + "\'," +
+                "thumbnail='" + thumbnail + '\'' +
+                '}';
+    }
 }
