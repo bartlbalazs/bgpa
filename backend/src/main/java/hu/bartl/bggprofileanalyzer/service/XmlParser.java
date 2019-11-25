@@ -36,7 +36,7 @@ public class XmlParser {
                         .minplaytime(Integer.parseInt((String) bg.get("minplaytime")))
                         .maxplaytime(Integer.parseInt((String) bg.get("maxplaytime")))
                         .age(Integer.parseInt((String) bg.get("age")))
-                        .thumbnail((String) bg.get("thumbnail"))
+                        .thumbnail(((String) bg.get("thumbnail")).trim())
                         .image((String) bg.get("image"))
                         .artists(parseNameEntities(bg.get("boardgameartist")))
                         .designers(parseNameEntities(bg.get("boardgamedesigner")))

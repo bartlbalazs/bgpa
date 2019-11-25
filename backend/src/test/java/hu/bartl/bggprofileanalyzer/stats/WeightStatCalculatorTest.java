@@ -1,27 +1,37 @@
 package hu.bartl.bggprofileanalyzer.stats;
 
+import static hu.bartl.bggprofileanalyzer.TestHelper.getTestFileContent;
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import hu.bartl.bggprofileanalyzer.configuration.XmlParsingConfiguration;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.StreamHelper;
 import hu.bartl.bggprofileanalyzer.service.XmlParser;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.util.ReflectionUtils;
 
-import static hu.bartl.bggprofileanalyzer.TestHelper.getTestFileContent;
-import static org.hamcrest.Matchers.closeTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
+@SpringBootTest
+@RunWith(SpringRunner.class)
 public class WeightStatCalculatorTest {
 
-    public static final double DELTA_BETWEEN_WEIGHT_GROUPS = 0.2;
+    private static final double DELTA_BETWEEN_WEIGHT_GROUPS = 0.2;
     private static Set<BoardGame> boardGames;
+
+    @Autowired
+    private WeightStatCalculator underTest;
 
     @BeforeClass
     public static void setup() {
@@ -32,15 +42,11 @@ public class WeightStatCalculatorTest {
 
     @Test
     public void shouldCalculateWeightStats() {
-        //TODO
-        //WeightStatCalculator underTest = new WeightStatCalculator(DELTA_BETWEEN_WEIGHT_GROUPS, new StreamHelper());
-        WeightStatCalculator underTest = new WeightStatCalculator(new StreamHelper());
-
         List<Popularity> weights = underTest.calculate(boardGames);
-        assertThat(weights.get(0).getEntityId(), is(Optional.empty()));
-        assertThat(weights.get(0).getEntityName(), is("1.20"));
-        assertThat(weights.get(0).getGamesRatio(), closeTo(2.12, 0.01));
-        assertThat(weights.get(0).getGamesCount(), is(1));
-        assertThat(weights.get(0).getGamesInGroup().size(), is(1));
+        assertThat(weights.get(6).getEntityId(), is(Optional.empty()));
+        assertThat(weights.get(6).getEntityName(), is("1.20"));
+        assertThat(weights.get(6).getGamesRatio(), closeTo(2.12, 0.01));
+        assertThat(weights.get(6).getGamesCount(), is(1));
+        assertThat(weights.get(6).getGamesInGroup().size(), is(1));
     }
 }
