@@ -11,7 +11,7 @@ public class StoryTeller extends GroupBasedBadge {
     private static final String ID = "storyTeller";
 
     private static final int THEMATIC_GAMES_DOMAIN = 5496;
-    private static final int BADGE_THRESHOLD = 40;
+    private static final int BADGE_THRESHOLD = 20;
 
     @Override
     public String getId() {

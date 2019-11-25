@@ -9,7 +9,7 @@ public class CardGamer extends GroupBasedBadge {
     private static final String ID = "cardGames";
 
     private static final int CARD_GAMES_ID = 1002;
-    private static final int BADGE_THRESHOLD = 20;
+    private static final int BADGE_THRESHOLD = 10;
 
     @Override
     public String getId() {

@@ -11,7 +11,7 @@ public class PartyFace extends GroupBasedBadge {
     private static final String ID = "partyFace";
 
     private static final int PARTY_GAMES_DOMAIN = 5498;
-    private static final int BADGE_THRESHOLD = 30;
+    private static final int BADGE_THRESHOLD = 15;
 
     @Override
     public String getId() {

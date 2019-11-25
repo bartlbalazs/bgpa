@@ -9,7 +9,7 @@ public class Economist extends GroupBasedBadge {
     private static final String ID = "economist";
 
     private static final int ECONOMIC_GAMES_ID = 1021;
-    private static final int BADGE_THRESHOLD = 15;
+    private static final int BADGE_THRESHOLD = 12;
 
     @Override
     public String getId() {

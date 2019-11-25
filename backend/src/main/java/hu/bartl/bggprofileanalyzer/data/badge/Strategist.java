@@ -11,7 +11,7 @@ public class Strategist extends GroupBasedBadge {
     private static final String ID = "strategist";
 
     private static final int STRATEGY_GAMES_DOMAIN = 5497;
-    private static final int BADGE_THRESHOLD = 40;
+    private static final int BADGE_THRESHOLD = 20;
 
     @Override
     public String getId() {

@@ -11,7 +11,7 @@ public class FamilyGuy extends GroupBasedBadge {
     private static final String ID = "familyGuy";
 
     private static final int FAMILY_GAMES_DOMAIN = 5499;
-    private static final int BADGE_THRESHOLD = 40;
+    private static final int BADGE_THRESHOLD = 25;
 
     @Override
     public String getId() {
