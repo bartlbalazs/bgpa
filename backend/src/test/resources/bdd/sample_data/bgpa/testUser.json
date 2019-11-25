@@ -9,6 +9,16 @@
   },
   "badges": [
     {
+      "id": "cardGames",
+      "displayName": "Master of cards",
+      "description": null
+    },
+    {
+      "id": "storyTeller",
+      "displayName": "Storyteller",
+      "description": null
+    },
+    {
       "id": "strategist",
       "displayName": "Strategist",
       "description": null
