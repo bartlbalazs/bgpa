@@ -17,6 +17,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
   statSubscription: Subscription;
 
   userId: string = null
+  summary: any = null
   badges: Badge[]
   popularities: any = {}
   selected_items: any = {}
@@ -32,6 +33,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
     return message => {
       if (message.userId) {
         this.userId = message.userId;
+        this.summary = message.summary;
         this.badges = message.badges;
         this.popularities['theme'] = PopularityData.fromRawData(message.categoryPopularities);
         this.popularities['mechanism'] = PopularityData.fromRawData(message.mechanismPopularities);

@@ -13,6 +13,7 @@ import { GameListComponent } from './game-list/game-list.component';
 import { PageNavComponent } from './page-nav/page-nav.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { BadgesComponent } from './badges/badges.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BadgesComponent } from './badges/badges.component';
     GameListComponent,
     PageNavComponent,
     PreferencesComponent,
-    BadgesComponent
+    BadgesComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
