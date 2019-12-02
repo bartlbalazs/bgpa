@@ -2,6 +2,11 @@ export const NATURAL_PALETTE: string[] = ['#bf9d76', '#e99450', '#d89f59', '#f2d
 
 export const GAUGE_PALETTE: string[] = ['#bf9d76', '#e99450', '#d89f59']
 
+export enum ChartType {
+    PIE,
+    BAR
+}
+
 export class ChartConfig {
 
 
@@ -19,5 +24,15 @@ export class ChartConfig {
 export class LinearGaugeConfig {
     constructor(public scheme: any = { domain: GAUGE_PALETTE },
         public view: any = [] = [280, 150]) {
+    }
+}
+
+export class BarChartConfig {
+    constructor(public view: any = [650, 250],
+        public showXAxis: boolean = true,
+        public showYAxis: boolean = true,
+        public legend: boolean= false,
+        public gradient: boolean = false,
+        public colorScheme: any = { domain: NATURAL_PALETTE }) {
     }
 }

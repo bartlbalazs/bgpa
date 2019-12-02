@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Subscription } from 'rxjs';
-import { ChartConfig } from '../shared/ChartConfig'
+import { ChartConfig, ChartType } from '../shared/ChartConfig'
 import { PopularityData } from '../shared/PopularityData'
 import { Badge } from '../shared/Badge'
 
@@ -12,7 +12,7 @@ import { Badge } from '../shared/Badge'
 })
 export class UserStatsComponent implements OnInit, OnDestroy {
 
-  chartConfig: ChartConfig
+  ChartType = ChartType
 
   statSubscription: Subscription;
 
@@ -26,7 +26,6 @@ export class UserStatsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.statSubscription = this.apiService.userStats.subscribe(this.handleUserStats())
-    this.chartConfig = new ChartConfig()
   }
 
   private handleUserStats(): (value: any) => void {
@@ -41,6 +40,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
         this.popularities['artist'] = PopularityData.fromRawData(message.artistPopularities);
         this.popularities['subDomain'] = PopularityData.fromRawData(message.subDomainPopularities);
         this.popularities['family'] = PopularityData.fromRawData(message.familyPopularities);
+        this.popularities['weight'] = PopularityData.fromRawData(message.weightPopularities);
         this.selected_items = {}
       }
     };
