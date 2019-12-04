@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WeightStatCalculator {
+public class WeightStatCalculator implements StatCalculator{
 
     @Value("${app.weights.step:1.0}")
     private double step;
@@ -55,11 +55,7 @@ public class WeightStatCalculator {
                 .entityName(WEIGHT_GROUP_NAME_FORMATTER.format(rW.getKey()))
                 .gamesInGroup(rW.getValue()
                     .stream()
-                    .map(g -> NamedEntityWithPicture.withPicture()
-                        .id(g.getId())
-                        .name(g.getName())
-                        .thumbnail(g.getThumbnail())
-                        .build())
+                    .map(g -> streams.namedEntityWithPictureFromGame(g))
                     .collect(Collectors.toSet()))
                 .gamesRatio(rW.getValue().size() * 100.0 / gamesCount)
                 .build()
