@@ -14,6 +14,7 @@ import { PageNavComponent } from './page-nav/page-nav.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { BadgesComponent } from './badges/badges.component';
 import { SummaryComponent } from './summary/summary.component';
+import { ChartType } from './shared/ChartConfig';
 
 @NgModule({
   declarations: [

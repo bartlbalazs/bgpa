@@ -1,25 +1,35 @@
 <div class="row" *ngIf="preferences">
   <div class="col-xl-6">
     <div class="card shadow mb-4">
-  
+
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">{{displayName}}</h6>
       </div>
-  
+
       <div class="card-body">
         <div class="chart-area">
-          <ngx-charts-pie-chart [view]="chartConfig.view" [scheme]="chartConfig.colorScheme"
-            [results]="preferences.chartData" [legend]="chartConfig.showLegend"
+
+          <ngx-charts-pie-chart *ngIf="chartType===ChartType.PIE" [view]="chartConfig.view"
+            [scheme]="chartConfig.colorScheme" [results]="preferences.chartData" [legend]="chartConfig.showLegend"
             [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels"
             [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient" (select)="onSelectFromChart($event)">
           </ngx-charts-pie-chart>
+
+          <ngx-charts-bar-vertical *ngIf="chartType===ChartType.BAR" [view]="barChartConfig.view"
+            [scheme]="barChartConfig.colorScheme" [results]="preferences.chartData" [legend]="false"
+            [xAxis]="barChartConfig.showXAxis" [yAxis]="barChartConfig.showYAxis" [gradient]="barChartConfig.gradient"
+            (select)="onSelectFromChart($event)">
+          </ngx-charts-bar-vertical>
         </div>
       </div>
     </div>
   </div>
-  
+
   <div class="col-xl-6 game-list-panel">
-    <app-game-list *ngIf="selected_items" [listOf]="selected_items.name" [games]="selected_items.gamesInGroup"
-      [maxHeight]="chartConfig.view[1]"></app-game-list>
+    <app-game-list *ngIf="selected_items && chartType===ChartType.PIE" [listOf]="selected_items.name"
+      [games]="selected_items.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
+
+    <app-game-list *ngIf="selected_items && chartType===ChartType.BAR" [listOf]="selected_items.name"
+      [games]="selected_items.gamesInGroup" [maxHeight]="barChartConfig.view[1] + 70"></app-game-list>
   </div>
 </div>
