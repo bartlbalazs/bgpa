@@ -21,6 +21,10 @@
   [chartType]="ChartType.BAR">
 </app-preferences>
 
+<app-preferences id="players" displayName="Games by player count" [preferences]="popularities.players"
+  [chartType]="ChartType.BAR">
+</app-preferences>
+
 <app-preferences id="themes" displayName="Themes" [preferences]="popularities.theme">
 </app-preferences>
 <app-preferences id="mechanisms" displayName="Mechanisms" [preferences]="popularities.mechanism"></app-preferences>

@@ -29,4 +29,12 @@ public class StreamHelper {
             return categories.stream().anyMatch(c -> EXPANSION_CATEGORY_ID == c.getId());
         };
     }
+
+    public NamedEntityWithPicture namedEntityWithPictureFromGame(BoardGame g) {
+        return NamedEntityWithPicture.withPicture()
+            .id(g.getId())
+            .name(g.getName())
+            .thumbnail(g.getThumbnail())
+            .build();
+    }
 }

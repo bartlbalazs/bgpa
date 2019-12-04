@@ -13,7 +13,7 @@ import static hu.bartl.bggprofileanalyzer.stats.Stats.SUBDOMAIN;
 public class Polyhistor implements Badge {
 
     private static final String ID = "polyhistor";
-    private static final int BADGE_THRESHOLD = 30;
+    private static final int BADGE_THRESHOLD = 40;
 
     @Override
     public String getId() {

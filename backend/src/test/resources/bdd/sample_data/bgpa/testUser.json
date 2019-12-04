@@ -36,14 +36,14 @@
       "gamesRatio": 28.571428571428573,
       "gamesInGroup": [
         {
-          "id": 192458,
-          "name": "51st State: Master Set",
-          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
-        },
-        {
           "id": 119337,
           "name": "Aeroplanes: Aviation Ascendant",
           "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
         }
       ],
       "gamesCount": 2
@@ -74,14 +74,14 @@
       "gamesRatio": 22.22222222222222,
       "gamesInGroup": [
         {
-          "id": 192458,
-          "name": "51st State: Master Set",
-          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
-        },
-        {
           "id": 119337,
           "name": "Aeroplanes: Aviation Ascendant",
           "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
         }
       ],
       "gamesCount": 2
@@ -132,14 +132,14 @@
       "gamesRatio": 66.66666666666667,
       "gamesInGroup": [
         {
-          "id": 192458,
-          "name": "51st State: Master Set",
-          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
-        },
-        {
           "id": 119337,
           "name": "Aeroplanes: Aviation Ascendant",
           "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
         }
       ],
       "gamesCount": 2
@@ -188,6 +188,255 @@
           "id": 192458,
           "name": "51st State: Master Set",
           "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 1
+    }
+  ],
+  "weightPopularities": [
+    {
+      "entityId": null,
+      "entityName": "0.00",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "0.25",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "0.50",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "0.75",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "1.00",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "1.25",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "1.50",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "1.75",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "2.00",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "2.25",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "2.50",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "2.75",
+      "gamesRatio": 100.0,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    },
+    {
+      "entityId": null,
+      "entityName": "3.00",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "3.25",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "3.50",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "3.75",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "4.00",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "4.25",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "4.50",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    },
+    {
+      "entityId": null,
+      "entityName": "4.75",
+      "gamesRatio": 0.0,
+      "gamesInGroup": [
+      ],
+      "gamesCount": 0
+    }
+  ],
+  "playerCountPopularities": [
+    {
+      "entityId": null,
+      "entityName": "1",
+      "gamesRatio": 50.0,
+      "gamesInGroup": [
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 1
+    },
+    {
+      "entityId": null,
+      "entityName": "2",
+      "gamesRatio": 50.0,
+      "gamesInGroup": [
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 1
+    },
+    {
+      "entityId": null,
+      "entityName": "3",
+      "gamesRatio": 100.0,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    },
+    {
+      "entityId": null,
+      "entityName": "4",
+      "gamesRatio": 100.0,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    },
+    {
+      "entityId": null,
+      "entityName": "5",
+      "gamesRatio": 50.0,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
         }
       ],
       "gamesCount": 1

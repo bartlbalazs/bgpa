@@ -27,4 +27,5 @@ public class UserStats {
     private final List<Popularity> familyPopularities;
 
     private final List<Popularity> weightPopularities;
+    private final List<Popularity> playerCountPopularities;
 }

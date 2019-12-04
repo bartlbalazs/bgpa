@@ -1,14 +1,23 @@
 package hu.bartl.bggprofileanalyzer.service;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
 import hu.bartl.bggprofileanalyzer.data.NamedEntity;
+import hu.bartl.bggprofileanalyzer.data.PlayerCountRecommendation;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +36,7 @@ public class XmlParser {
     private BoardGame parseBoardGame(Map<?, ?> bg) {
         BoardGame.BoardGameBuilder gameBuilder =
                 BoardGame.builder()
-                        .id(Integer.parseInt((String)bg.get("objectid")))
+                        .id(Integer.parseInt((String) bg.get("objectid")))
                         .name(parseName(bg.get("name")))
                         .yearpublished(Integer.parseInt((String) bg.get("yearpublished")))
                         .minplayers(Integer.parseInt((String) bg.get("minplayers")))
@@ -38,32 +47,68 @@ public class XmlParser {
                         .age(Integer.parseInt((String) bg.get("age")))
                         .thumbnail(((String) bg.get("thumbnail")).trim())
                         .image((String) bg.get("image"))
-                        .artists(parseNameEntities(bg.get("boardgameartist")))
-                        .designers(parseNameEntities(bg.get("boardgamedesigner")))
-                        .categories(parseNameEntities(bg.get("boardgamecategory")))
-                        .families(parseNameEntities(bg.get("boardgamefamily")))
-                        .mechanics(parseNameEntities(bg.get("boardgamemechanic")))
-                        .subDomains(parseNameEntities(bg.get("boardgamesubdomain")))
-                        .expansions(parseNameEntities(bg.get("boardgameexpansion")));
+                        .artists(parseNamedEntities(bg.get("boardgameartist")))
+                        .designers(parseNamedEntities(bg.get("boardgamedesigner")))
+                        .categories(parseNamedEntities(bg.get("boardgamecategory")))
+                        .families(parseNamedEntities(bg.get("boardgamefamily")))
+                        .mechanics(parseNamedEntities(bg.get("boardgamemechanic")))
+                        .subDomains(parseNamedEntities(bg.get("boardgamesubdomain")))
+                        .expansions(parseNamedEntities(bg.get("boardgameexpansion")))
+                        .playerCountRecommendations(parsePlayerCountRecommendations(bg.get("poll")));
 
         Map<String, Object> ratings = (Map<String, Object>) ((Map<String, Object>) bg.get("statistics")).get("ratings");
         processRatings(gameBuilder, ratings);
         return gameBuilder.build();
     }
 
-    private Set<NamedEntity> parseNameEntities(Object entyNode) {
+    private Set<NamedEntity> parseNamedEntities(Object entityNode) {
         Set<NamedEntity> result = new HashSet<>();
-        if (entyNode != null) {
-            if (entyNode instanceof List) {
-                ((List) entyNode)
+        if (entityNode != null) {
+            if (entityNode instanceof List) {
+                ((List) entityNode)
                         .stream()
                         .map(this::parseNamedEntity)
                         .forEach(e -> result.add((NamedEntity) e));
             } else {
-                result.add(parseNamedEntity(entyNode));
+                result.add(parseNamedEntity(entityNode));
             }
         }
         return result;
+    }
+
+    private Set<PlayerCountRecommendation> parsePlayerCountRecommendations(Object poll) {
+        if (!(poll instanceof List)) {
+            return ImmutableSet.of();
+        }
+
+        return (Set<PlayerCountRecommendation>)
+                ((List) poll)
+                        .stream()
+                        .filter(ps -> "suggested_numplayers".equals(((Map<String, Object>) ps).get("name")))
+                        .map(p -> ((Map) p).get("results"))
+                        .filter(rs -> rs instanceof List)
+                        .flatMap(rs -> ((List) rs).stream())
+                        .filter(r -> Pattern.matches("\\d+", (String) ((Map) r).get("numplayers")))
+                        .map(r -> {
+                            Map rMap = (Map) r;
+                            return Pair.of(Integer.parseInt(String.valueOf(rMap.get("numplayers"))), rMap.get("result"));
+                        })
+                        .map(np -> {
+                            Integer numberOfPlayers = (Integer) ((Pair) np).getFirst();
+                            Map<String, Integer> pollResults = Maps.newHashMap();
+                            List<Map<String, String>> rawResults = (List) ((Pair) np).getSecond();
+                            for (Map<String, String> pollResultForPlayerCount : rawResults) {
+                                pollResults.put(pollResultForPlayerCount.get("value"), Integer.parseInt(pollResultForPlayerCount.get("numvotes")));
+                            }
+
+                            return PlayerCountRecommendation.builder()
+                                    .numplayers(numberOfPlayers)
+                                    .best(pollResults.get("Best"))
+                                    .recommended(pollResults.get("Recommended"))
+                                    .notRecommended(pollResults.get("Not Recommended"))
+                                    .build();
+                        })
+                        .collect(Collectors.toSet());
     }
 
     private NamedEntity parseNamedEntity(Object entityProperty) {

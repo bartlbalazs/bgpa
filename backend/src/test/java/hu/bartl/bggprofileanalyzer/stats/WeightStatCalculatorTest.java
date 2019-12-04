@@ -27,7 +27,6 @@ import org.springframework.util.ReflectionUtils;
 @RunWith(SpringRunner.class)
 public class WeightStatCalculatorTest {
 
-    private static final double DELTA_BETWEEN_WEIGHT_GROUPS = 0.2;
     private static Set<BoardGame> boardGames;
 
     @Autowired
@@ -43,10 +42,10 @@ public class WeightStatCalculatorTest {
     @Test
     public void shouldCalculateWeightStats() {
         List<Popularity> weights = underTest.calculate(boardGames);
-        assertThat(weights.get(6).getEntityId(), is(Optional.empty()));
-        assertThat(weights.get(6).getEntityName(), is("1.20"));
-        assertThat(weights.get(6).getGamesRatio(), closeTo(2.12, 0.01));
-        assertThat(weights.get(6).getGamesCount(), is(1));
-        assertThat(weights.get(6).getGamesInGroup().size(), is(1));
+        assertThat(weights.get(5).getEntityId(), is(Optional.empty()));
+        assertThat(weights.get(5).getEntityName(), is("1.25"));
+        assertThat(weights.get(5).getGamesRatio(), closeTo(2.12, 0.01));
+        assertThat(weights.get(5).getGamesCount(), is(1));
+        assertThat(weights.get(5).getGamesInGroup().size(), is(1));
     }
 }

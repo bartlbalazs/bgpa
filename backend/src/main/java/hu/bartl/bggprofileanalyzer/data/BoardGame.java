@@ -1,15 +1,14 @@
 package hu.bartl.bggprofileanalyzer.data;
 
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Set;
+import lombok.Builder;
+import lombok.Data;
 
 @Data
 @Builder(toBuilder = true)
 public class BoardGame implements Serializable {
-    
+
     private int id;
     private int yearpublished;
     private int minplayers;
@@ -33,4 +32,5 @@ public class BoardGame implements Serializable {
     private Set<NamedEntity> categories;
     private Set<NamedEntity> mechanics;
     private Set<NamedEntity> subDomains;
+    private Set<PlayerCountRecommendation> playerCountRecommendations;
 }
