@@ -15,20 +15,18 @@
   </div>
 </div>
 
-<app-summary [summary]=summary></app-summary>
+<app-summary id="summary" [summary]=summary></app-summary>
 
-<app-preferences id="complexity" displayName="Complexity" [preferences]="popularities.weight" [chartType]="ChartType.BAR">
+<app-preferences id="complexity" displayName="Complexity" [preferences]="popularities.weight"
+  [chartType]="ChartType.BAR">
 </app-preferences>
 
 <app-preferences id="themes" displayName="Themes" [preferences]="popularities.theme">
 </app-preferences>
-<app-preferences id="mechanisms" displayName="Mechanisms" [preferences]="popularities.mechanism"
- ></app-preferences>
-<app-preferences id="designers" displayName="Designers" [preferences]="popularities.designer"
-  ></app-preferences>
+<app-preferences id="mechanisms" displayName="Mechanisms" [preferences]="popularities.mechanism"></app-preferences>
+<app-preferences id="designers" displayName="Designers" [preferences]="popularities.designer"></app-preferences>
 <app-preferences id="artists" displayName="Artists" [preferences]="popularities.artist">
 </app-preferences>
 <app-preferences id="families" displayName="Families" [preferences]="popularities.family">
 </app-preferences>
-<app-preferences id="subdomains" displayName="Subdomains" [preferences]="popularities.subDomain"
-  ></app-preferences>
+<app-preferences id="subdomains" displayName="Subdomains" [preferences]="popularities.subDomain"></app-preferences>
