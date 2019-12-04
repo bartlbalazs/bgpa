@@ -45,7 +45,7 @@ public class PlayerCountStatCalculator implements StatCalculator {
             .sorted(Comparator.comparingInt(Map.Entry::getKey))
             .map(r -> Popularity.builder()
                 .entityId(Optional.empty())
-                .entityName(String.valueOf(r.getKey()))
+                .entityName(getPlayerCountLabel(r))
                 .gamesInGroup(r.getValue()
                     .stream()
                     .map(g -> streams.namedEntityWithPictureFromGame(g))
@@ -53,5 +53,10 @@ public class PlayerCountStatCalculator implements StatCalculator {
                 .gamesRatio(r.getValue().size() * 100.0 / gamesCount)
                 .build()
             ).collect(Collectors.toList());
+    }
+
+    private String getPlayerCountLabel(Map.Entry<Integer, Set<BoardGame>> r) {
+        Integer playerCount = r.getKey();
+        return playerCount == 1 ? "1 player" : playerCount + " players";
     }
 }
