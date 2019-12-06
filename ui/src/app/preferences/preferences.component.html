@@ -4,19 +4,27 @@
 
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">{{displayName}}</h6>
+
+        <div *ngIf="filterName" class="form-check">
+          <label class="customcheck">
+            {{filterName}}
+            <input type="checkbox" class="form-check-input" [checked]="filteringActive" (change)="onFiltering()">
+            <span class="checkmark"></span>
+          </label>
+        </div>
       </div>
 
       <div class="card-body">
         <div class="chart-area">
 
           <ngx-charts-pie-chart *ngIf="chartType===ChartType.PIE" [view]="chartConfig.view"
-            [scheme]="chartConfig.colorScheme" [results]="preferences.chartData" [legend]="chartConfig.showLegend"
+            [scheme]="chartConfig.colorScheme" [results]="selectedDataset.chartData" [legend]="chartConfig.showLegend"
             [explodeSlices]="chartConfig.explodeSlices" [labels]="chartConfig.showLabels"
             [doughnut]="chartConfig.doughnut" [gradient]="chartConfig.gradient" (select)="onSelectFromChart($event)">
           </ngx-charts-pie-chart>
 
           <ngx-charts-bar-vertical *ngIf="chartType===ChartType.BAR" [view]="barChartConfig.view"
-            [scheme]="barChartConfig.colorScheme" [results]="preferences.chartData" [legend]="false"
+            [scheme]="barChartConfig.colorScheme" [results]="selectedDataset.chartData" [legend]="false"
             [xAxis]="barChartConfig.showXAxis" [yAxis]="barChartConfig.showYAxis" [gradient]="barChartConfig.gradient"
             (select)="onSelectFromChart($event)">
           </ngx-charts-bar-vertical>
