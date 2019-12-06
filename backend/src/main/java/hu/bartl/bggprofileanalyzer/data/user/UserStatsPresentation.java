@@ -32,6 +32,7 @@ public class UserStatsPresentation {
     private final List<Popularity> familyWoExpansionsPopularities;
 
     private final List<Popularity> weightPopularities;
+    private final List<Popularity> yearPopularities;
     private final List<Popularity> recommendedPlayerCountPopularities;
     private final List<Popularity> bestPlayerCountPopularities;
 
@@ -51,6 +52,7 @@ public class UserStatsPresentation {
                 .mechanismWoExpansionsPopularities(userStats.getMechanismWoExpansionsPopularities())
                 .subDomainWoExpansionsPopularities(userStats.getSubDomainWoExpansionsPopularities())
                 .weightPopularities(userStats.getWeightPopularities())
+                .yearPopularities(userStats.getYearPopularities())
                 .recommendedPlayerCountPopularities(userStats.getRecommendedPlayerCountPopularities())
                 .bestPlayerCountPopularities(userStats.getBestPlayerCountPopularities())
                 .build();

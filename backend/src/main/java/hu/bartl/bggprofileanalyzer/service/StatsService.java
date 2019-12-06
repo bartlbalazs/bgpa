@@ -13,6 +13,7 @@ import hu.bartl.bggprofileanalyzer.stats.BestPlayerCountStatCalculator;
 import hu.bartl.bggprofileanalyzer.stats.RecommendedPlayerCountStatCalculator;
 import hu.bartl.bggprofileanalyzer.stats.Stats;
 import hu.bartl.bggprofileanalyzer.stats.WeightStatCalculator;
+import hu.bartl.bggprofileanalyzer.stats.YearPopularityStatCalculator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,8 @@ public class StatsService {
 
     private final WeightStatCalculator weightStatCalculator;
 
+    private final YearPopularityStatCalculator yearPopularityStatCalculator;
+
     private final RecommendedPlayerCountStatCalculator recommendedPlayerCountStatCalculator;
 
     private final BestPlayerCountStatCalculator bestPlayerCountStatCalculator;
@@ -84,6 +87,7 @@ public class StatsService {
                 .artistWoExpansionsPopularities(stats.get(ARTIST_WITHOUT_EXPANSIONS))
                 .familyWoExpansionsPopularities(stats.get(FAMILY_WITHOUT_EXPANSIONS))
                 .weightPopularities(weightStatCalculator.calculate(games))
+                .yearPopularities(yearPopularityStatCalculator.calculate(games))
                 .recommendedPlayerCountPopularities(recommendedPlayerCountStatCalculator.calculate(games))
                 .bestPlayerCountPopularities(bestPlayerCountStatCalculator.calculate(games))
                 .build();
