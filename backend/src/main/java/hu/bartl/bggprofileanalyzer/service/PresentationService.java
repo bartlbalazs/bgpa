@@ -57,6 +57,31 @@ public class PresentationService {
                 configuration.getOtherSubdomainMaxRatio(),
                 configuration.getMinimalSubdomainGroupSize()));
 
+        presentationBuilder.artistWoExpansionsPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getArtistWoExpansionsPopularities(),
+                configuration.getOtherArtistMaxRatio(),
+                configuration.getMinimalGroupSize()));
+
+        presentationBuilder.categoryWoExpansionsPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getCategoryWoExpansionsPopularities(),
+                configuration.getOthersMaxRatio(),
+                configuration.getMinimalGroupSize()));
+
+        presentationBuilder.designerWoExpansionsPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getDesignerWoExpansionsPopularities(),
+                configuration.getOtherDesignerMaxRatio(),
+                configuration.getMinimalGroupSize()));
+
+        presentationBuilder.familyWoExpansionsPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getFamilyWoExpansionsPopularities(),
+                configuration.getOtherFamilyMaxRatio(),
+                configuration.getMinimalGroupSize()));
+
+        presentationBuilder.mechanismWoExpansionsPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getMechanismWoExpansionsPopularities(),
+                configuration.getOtherMechanicMaxRatio(),
+                configuration.getMinimalGroupSize()));
+
+        presentationBuilder.subDomainWoExpansionsPopularities(aggregator.aggregateSmallGroupsAsOthers(rawStats.getSubDomainWoExpansionsPopularities(),
+                configuration.getOtherSubdomainMaxRatio(),
+                configuration.getMinimalSubdomainGroupSize()));
+
+
         presentationBuilder.weightPopularities(groupStatMissingDataHelper.fillData(rawStats.getWeightPopularities(), 0.2));
 
         return presentationBuilder.build();

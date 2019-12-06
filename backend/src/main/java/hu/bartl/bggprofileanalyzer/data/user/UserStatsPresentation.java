@@ -23,6 +23,14 @@ public class UserStatsPresentation {
     private final List<Popularity> artistPopularities;
     private final List<Popularity> familyPopularities;
 
+
+    private final List<Popularity> categoryWoExpansionsPopularities;
+    private final List<Popularity> mechanismWoExpansionsPopularities;
+    private final List<Popularity> designerWoExpansionsPopularities;
+    private final List<Popularity> subDomainWoExpansionsPopularities;
+    private final List<Popularity> artistWoExpansionsPopularities;
+    private final List<Popularity> familyWoExpansionsPopularities;
+
     private final List<Popularity> weightPopularities;
     private final List<Popularity> recommendedPlayerCountPopularities;
     private final List<Popularity> bestPlayerCountPopularities;
@@ -36,6 +44,12 @@ public class UserStatsPresentation {
                 .familyPopularities(userStats.getFamilyPopularities())
                 .mechanismPopularities(userStats.getMechanismPopularities())
                 .subDomainPopularities(userStats.getSubDomainPopularities())
+                .artistWoExpansionsPopularities(userStats.getArtistWoExpansionsPopularities())
+                .categoryWoExpansionsPopularities(userStats.getCategoryWoExpansionsPopularities())
+                .designerWoExpansionsPopularities(userStats.getDesignerWoExpansionsPopularities())
+                .familyWoExpansionsPopularities(userStats.getFamilyWoExpansionsPopularities())
+                .mechanismWoExpansionsPopularities(userStats.getMechanismWoExpansionsPopularities())
+                .subDomainWoExpansionsPopularities(userStats.getSubDomainWoExpansionsPopularities())
                 .weightPopularities(userStats.getWeightPopularities())
                 .recommendedPlayerCountPopularities(userStats.getRecommendedPlayerCountPopularities())
                 .bestPlayerCountPopularities(userStats.getBestPlayerCountPopularities())
