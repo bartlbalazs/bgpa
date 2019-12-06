@@ -193,6 +193,170 @@
       "gamesCount": 1
     }
   ],
+  "categoryWoExpansionsPopularities": [
+    {
+      "entityId": 1021,
+      "entityName": "Economic",
+      "gamesRatio": 28.571428571428573,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    },
+    {
+      "entityId": null,
+      "entityName": "Other",
+      "gamesRatio": 71.42857142857143,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    }
+  ],
+  "mechanismWoExpansionsPopularities": [
+    {
+      "entityId": 2041,
+      "entityName": "Card Drafting",
+      "gamesRatio": 22.22222222222222,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    },
+    {
+      "entityId": null,
+      "entityName": "Other",
+      "gamesRatio": 77.77777777777779,
+      "gamesInGroup": [
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        },
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        }
+      ],
+      "gamesCount": 2
+    }
+  ],
+  "designerWoExpansionsPopularities": [
+    {
+      "entityId": null,
+      "entityName": "Other",
+      "gamesRatio": 100.0,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    }
+  ],
+  "subDomainWoExpansionsPopularities": [
+    {
+      "entityId": 5497,
+      "entityName": "Strategy Games",
+      "gamesRatio": 66.66666666666667,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        },
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 2
+    },
+    {
+      "entityId": 5496,
+      "entityName": "Thematic Games",
+      "gamesRatio": 33.333333333333336,
+      "gamesInGroup": [
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 1
+    }
+  ],
+  "artistWoExpansionsPopularities": [
+    {
+      "entityId": null,
+      "entityName": "Other",
+      "gamesRatio": 100.0,
+      "gamesInGroup": [
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        },
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        }
+      ],
+      "gamesCount": 2
+    }
+  ],
+  "familyWoExpansionsPopularities": [
+    {
+      "entityId": null,
+      "entityName": "Other",
+      "gamesRatio": 100.0,
+      "gamesInGroup": [
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 1
+    }
+  ],
   "weightPopularities": [
     {
       "entityId": null,

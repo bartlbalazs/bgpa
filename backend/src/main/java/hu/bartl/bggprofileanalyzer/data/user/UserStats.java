@@ -26,6 +26,14 @@ public class UserStats {
     private final List<Popularity> artistPopularities;
     private final List<Popularity> familyPopularities;
 
+    private final List<Popularity> categoryWoExpansionsPopularities;
+    private final List<Popularity> mechanismWoExpansionsPopularities;
+    private final List<Popularity> designerWoExpansionsPopularities;
+    private final List<Popularity> subDomainWoExpansionsPopularities;
+    private final List<Popularity> artistWoExpansionsPopularities;
+    private final List<Popularity> familyWoExpansionsPopularities;
+
+
     private final List<Popularity> weightPopularities;
     private final List<Popularity> recommendedPlayerCountPopularities;
     private final List<Popularity> bestPlayerCountPopularities;
