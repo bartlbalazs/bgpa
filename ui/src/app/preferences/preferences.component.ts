@@ -45,18 +45,15 @@ export class PreferencesComponent implements OnInit, OnChanges {
   }
 
   onFiltering() {
-    console.log("filter")
     this.filteringActive = !this.filteringActive;
     this.ngOnChanges(null);
   }
 
   ngOnInit(): void {
-    console.log("init")
     this.selectedDataset = this.preferences;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("change")
     this.selected_items = null;
     this.selectedDataset = this.filteringActive ? this.filteredPreferences : this.preferences;
   }

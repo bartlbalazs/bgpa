@@ -4,9 +4,13 @@
 
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">{{displayName}}</h6>
-        <div *ngIf="filterName">
-          <label>{{filterName}}</label>
-          <input  type="checkbox" class="form-check-input" [checked]="filteringActive" (change)="onFiltering()">
+
+        <div *ngIf="filterName" class="form-check">
+          <label class="customcheck">
+            {{filterName}}
+            <input type="checkbox" class="form-check-input" [checked]="filteringActive" (change)="onFiltering()">
+            <span class="checkmark"></span>
+          </label>
         </div>
       </div>
 
