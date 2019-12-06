@@ -47,6 +47,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
         this.popularities['subDomainWoExpansions'] = PopularityData.fromRawData(message.subDomainWoExpansionsPopularities);
         this.popularities['familyWoExpansions'] = PopularityData.fromRawData(message.familyWoExpansionsPopularities);
         this.popularities['weight'] = PopularityData.fromRawData(message.weightPopularities);
+        this.popularities['year'] = PopularityData.fromRawData(message.yearPopularities);
         this.popularities['recommendedPlayers'] = PopularityData.fromRawData(message.recommendedPlayerCountPopularities);
         this.popularities['bestPlayers'] = PopularityData.fromRawData(message.bestPlayerCountPopularities);
         this.selected_items = {}

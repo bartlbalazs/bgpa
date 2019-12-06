@@ -510,6 +510,34 @@
       "gamesCount": 0
     }
   ],
+  "yearPopularities": [
+    {
+      "entityId": null,
+      "entityName": "2012",
+      "gamesRatio": 50.0,
+      "gamesInGroup": [
+        {
+          "id": 119337,
+          "name": "Aeroplanes: Aviation Ascendant",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/LaJbTSlCZunfZ9muSd3EGvf60qY=/fit-in/200x150/pic1221593.jpg"
+        }
+      ],
+      "gamesCount": 1
+    },
+    {
+      "entityId": null,
+      "entityName": "2016",
+      "gamesRatio": 50.0,
+      "gamesInGroup": [
+        {
+          "id": 192458,
+          "name": "51st State: Master Set",
+          "thumbnail": "https://cf.geekdo-images.com/thumb/img/bxYLwIIAg9qhq9BSCcODWN94SR4=/fit-in/200x150/pic2945432.jpg"
+        }
+      ],
+      "gamesCount": 1
+    }
+  ],
   "recommendedPlayerCountPopularities": [
     {
       "entityId": null,

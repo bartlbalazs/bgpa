@@ -62,7 +62,5 @@ public abstract class AbstractPlayerCountStatCalculator implements StatCalculato
         return playerCount == 1 ? "1 player" : playerCount + " players";
     }
 
-    Function<PlayerCountRecommendation, Boolean> isRecommended = PlayerCountRecommendation::isRecommended;
-
     protected abstract Function<PlayerCountRecommendation, Boolean> isIncluded();
 }
