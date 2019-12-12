@@ -138,7 +138,7 @@ public class XmlParser {
             }
 
         }
-        builder.userRating(Double.parseDouble((String) ratings.get("usersrated")))
+        builder.userRating(Double.parseDouble((String) ratings.get("bayesaverage")))
                 .weight(Double.parseDouble((String) ratings.get("averageweight")))
                 .owned(Integer.parseInt((String) ratings.get("owned")));
     }

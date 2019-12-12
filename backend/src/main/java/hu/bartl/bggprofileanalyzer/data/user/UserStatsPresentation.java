@@ -1,17 +1,19 @@
 package hu.bartl.bggprofileanalyzer.data.user;
 
+import com.google.common.collect.Lists;
+import hu.bartl.bggprofileanalyzer.data.NamedEntityWithCoordinates;
 import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.badge.BadgePresentation;
 import hu.bartl.bggprofileanalyzer.data.summary.SummaryPresentation;
-import lombok.Builder;
-import lombok.Data;
-
 import java.util.List;
 import java.util.Set;
+import lombok.Builder;
+import lombok.Data;
 
 @Data
 @Builder(toBuilder = true)
 public class UserStatsPresentation {
+
     private final String userId;
     private final SummaryPresentation summary;
 
@@ -22,7 +24,6 @@ public class UserStatsPresentation {
     private final List<Popularity> subDomainPopularities;
     private final List<Popularity> artistPopularities;
     private final List<Popularity> familyPopularities;
-
 
     private final List<Popularity> categoryWoExpansionsPopularities;
     private final List<Popularity> mechanismWoExpansionsPopularities;
@@ -36,25 +37,28 @@ public class UserStatsPresentation {
     private final List<Popularity> recommendedPlayerCountPopularities;
     private final List<Popularity> bestPlayerCountPopularities;
 
+    private final List<NamedEntityWithCoordinates> gamesByComplexityAndPlayerCount;
+
     public static UserStatsPresentation fromRawStats(UserStats userStats) {
         return UserStatsPresentation.builder()
-                .userId(userStats.getUserId())
-                .artistPopularities(userStats.getArtistPopularities())
-                .categoryPopularities(userStats.getCategoryPopularities())
-                .designerPopularities(userStats.getDesignerPopularities())
-                .familyPopularities(userStats.getFamilyPopularities())
-                .mechanismPopularities(userStats.getMechanismPopularities())
-                .subDomainPopularities(userStats.getSubDomainPopularities())
-                .artistWoExpansionsPopularities(userStats.getArtistWoExpansionsPopularities())
-                .categoryWoExpansionsPopularities(userStats.getCategoryWoExpansionsPopularities())
-                .designerWoExpansionsPopularities(userStats.getDesignerWoExpansionsPopularities())
-                .familyWoExpansionsPopularities(userStats.getFamilyWoExpansionsPopularities())
-                .mechanismWoExpansionsPopularities(userStats.getMechanismWoExpansionsPopularities())
-                .subDomainWoExpansionsPopularities(userStats.getSubDomainWoExpansionsPopularities())
-                .weightPopularities(userStats.getWeightPopularities())
-                .yearPopularities(userStats.getYearPopularities())
-                .recommendedPlayerCountPopularities(userStats.getRecommendedPlayerCountPopularities())
-                .bestPlayerCountPopularities(userStats.getBestPlayerCountPopularities())
-                .build();
+            .userId(userStats.getUserId())
+            .artistPopularities(userStats.getArtistPopularities())
+            .categoryPopularities(userStats.getCategoryPopularities())
+            .designerPopularities(userStats.getDesignerPopularities())
+            .familyPopularities(userStats.getFamilyPopularities())
+            .mechanismPopularities(userStats.getMechanismPopularities())
+            .subDomainPopularities(userStats.getSubDomainPopularities())
+            .artistWoExpansionsPopularities(userStats.getArtistWoExpansionsPopularities())
+            .categoryWoExpansionsPopularities(userStats.getCategoryWoExpansionsPopularities())
+            .designerWoExpansionsPopularities(userStats.getDesignerWoExpansionsPopularities())
+            .familyWoExpansionsPopularities(userStats.getFamilyWoExpansionsPopularities())
+            .mechanismWoExpansionsPopularities(userStats.getMechanismWoExpansionsPopularities())
+            .subDomainWoExpansionsPopularities(userStats.getSubDomainWoExpansionsPopularities())
+            .weightPopularities(userStats.getWeightPopularities())
+            .yearPopularities(userStats.getYearPopularities())
+            .recommendedPlayerCountPopularities(userStats.getRecommendedPlayerCountPopularities())
+            .bestPlayerCountPopularities(userStats.getBestPlayerCountPopularities())
+            .gamesByComplexityAndPlayerCount(Lists.newArrayList())
+            .build();
     }
 }

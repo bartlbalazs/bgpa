@@ -145,7 +145,7 @@ public class TestHelper {
             .age(12)
             .playingtime(120)
             .yearpublished(2015)
-            .userRating(7.7337)
+            .userRating(7.44297)
             .weight(3.2251)
             .rank(100)
             .familyRank(66)

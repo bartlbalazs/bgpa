@@ -9,6 +9,6 @@ import java.io.Serializable;
 @Data
 public class NamedEntity implements Serializable {
 
-    private final int id;
-    private final String name;
+    protected final int id;
+    protected final String name;
 }
