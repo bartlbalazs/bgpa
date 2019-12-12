@@ -24,7 +24,7 @@ public class GamesToChartDataConverter {
                 .name(g.getName())
                 .thumbnail(g.getThumbnail())
                 .x(g.getWeight())
-                .r(g.getUserRating() * 5).build();
+                .r(g.getUserRating()).build();
             g.getPlayerCountRecommendations().forEach(r -> {
                 if (r.isBest()) {
                     result.add(proto.toBuilder().y(r.getNumplayers()).build());

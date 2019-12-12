@@ -28,6 +28,13 @@
             [xAxis]="barChartConfig.showXAxis" [yAxis]="barChartConfig.showYAxis" [gradient]="barChartConfig.gradient"
             (select)="onSelectFromChart($event)">
           </ngx-charts-bar-vertical>
+
+          <ngx-charts-bubble-chart *ngIf="chartType===ChartType.BUBBLE" [view]="bubbleChartConfig.view"
+          [scheme]="bubbleChartConfig.colorScheme" [results]="selectedDataset" [legend]="false"
+          [xAxis]="bubbleChartConfig.showXAxis" [yAxis]="bubbleChartConfig.showYAxis"
+          [xScaleMin]="bubbleChartConfig.xScaleMin"
+          (select)="onSelectItem($event)">
+        </ngx-charts-bubble-chart>
         </div>
       </div>
     </div>
@@ -39,5 +46,9 @@
 
     <app-game-list *ngIf="selected_items && chartType===ChartType.BAR" [listOf]="selected_items.name"
       [games]="selected_items.gamesInGroup" [maxHeight]="barChartConfig.view[1] + 70"></app-game-list>
+
+    <app-game-panel *ngIf="selected_item && chartType===ChartType.BUBBLE" [maxHeight]="bubbleChartConfig.view[1] + 70"  [game]="selected_item">
+
+    </app-game-panel>
   </div>
 </div>

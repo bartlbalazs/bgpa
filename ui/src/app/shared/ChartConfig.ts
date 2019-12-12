@@ -2,9 +2,12 @@ export const NATURAL_PALETTE: string[] = ['#bf9d76', '#e99450', '#d89f59', '#f2d
 
 export const GAUGE_PALETTE: string[] = ['#bf9d76', '#e99450', '#d89f59']
 
+export const BUBBLE_PALETTE: string[] = ['#e99450', '#d89f59']
+
 export enum ChartType {
     PIE,
-    BAR
+    BAR,
+    BUBBLE
 }
 
 export class ChartConfig {
@@ -31,8 +34,19 @@ export class BarChartConfig {
     constructor(public view: any = [650, 250],
         public showXAxis: boolean = true,
         public showYAxis: boolean = true,
-        public legend: boolean= false,
+        public legend: boolean = false,
         public gradient: boolean = false,
         public colorScheme: any = { domain: NATURAL_PALETTE }) {
+    }
+}
+
+export class BubbleChartConfig {
+    constructor(public view: any = [650, 350],
+        public showXAxis: boolean = true,
+        public showYAxis: boolean = true,
+        public legend: boolean = true,
+        public minRadius: number = 3,
+        public xScaleMin: number = 1,
+        public colorScheme: any = { domain: BUBBLE_PALETTE }) {
     }
 }

@@ -15,6 +15,7 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { BadgesComponent } from './badges/badges.component';
 import { SummaryComponent } from './summary/summary.component';
 import { ChartType } from './shared/ChartConfig';
+import { GamePanelComponent } from './game-panel/game-panel.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ChartType } from './shared/ChartConfig';
     PageNavComponent,
     PreferencesComponent,
     BadgesComponent,
-    SummaryComponent
+    SummaryComponent,
+    GamePanelComponent
   ],
   imports: [
     BrowserModule,
