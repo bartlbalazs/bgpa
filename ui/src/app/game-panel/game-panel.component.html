@@ -1,12 +1,19 @@
 <div class="card shadow mb-4 game-panel">
 
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-    <h6 class="m-0 font-weight-bold text-primary">{{game.name}}</h6>
+    <a class="m-0 font-weight-bold text-primary"  href="https://boardgamegeek.com/boardgame/{{game.id}}" target="blank" >{{game.name}}</a>
   </div>
 
   <div class="card-body">
     <div [style.max-height.px]="maxHeight">
-      {{game.name}}
+      <div class="img-container" [ngStyle]="{'background-image':'url('+game.thumbnail+')'}">
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{game.series}}</p>
+        <p class="card-text">{{game.r}}</p>
+        <p class="card-text">{{game.x}}</p>
+        <p class="card-text">{{game.y}}</p>
+      </div>
     </div>
   </div>
 </div>

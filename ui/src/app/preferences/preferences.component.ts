@@ -38,6 +38,15 @@ export class PreferencesComponent implements OnInit, OnChanges {
   @Input()
   bubbleChartConfig = new BubbleChartConfig()
 
+  @Input()
+  xLabel: string
+
+  @Input()
+  yLabel: string
+
+  @Input()
+  rLabel: string
+
   filteringActive: boolean = false
 
   selected_items: any[]
@@ -50,7 +59,9 @@ export class PreferencesComponent implements OnInit, OnChanges {
   }
 
   onSelectItem($event: any) {
-    this.selected_item= $event
+    if ($event.id) {
+      this.selected_item = $event
+    }
   }
 
   onFiltering() {

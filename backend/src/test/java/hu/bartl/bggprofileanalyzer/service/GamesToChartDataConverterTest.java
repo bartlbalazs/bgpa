@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import hu.bartl.bggprofileanalyzer.configuration.XmlParsingConfiguration;
 import hu.bartl.bggprofileanalyzer.data.BoardGame;
+import hu.bartl.bggprofileanalyzer.data.ChartData;
 import hu.bartl.bggprofileanalyzer.data.NamedEntityWithCoordinates;
 import hu.bartl.bggprofileanalyzer.data.StreamHelper;
 import hu.bartl.bggprofileanalyzer.stats.BestPlayerCountStatCalculator;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.data.util.Pair;
 
 public class GamesToChartDataConverterTest {
 
@@ -31,7 +33,7 @@ public class GamesToChartDataConverterTest {
 
     @Test
     public void gamesToPlayercountComplexityChart() {
-        List<NamedEntityWithCoordinates> result = underTest.gamesToPlayercountComplexityChart(boardGames);
-        assertThat(result.size(), is(58));
+        List<ChartData> result = underTest.gamesToPlayercountComplexityChart(boardGames);
+        assertThat(result.size(), is(5));
     }
 }

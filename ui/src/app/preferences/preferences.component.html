@@ -24,15 +24,19 @@
           </ngx-charts-pie-chart>
 
           <ngx-charts-bar-vertical *ngIf="chartType===ChartType.BAR" [view]="barChartConfig.view"
-            [scheme]="barChartConfig.colorScheme" [results]="selectedDataset.chartData" [legend]="false"
+            [scheme]="barChartConfig.colorScheme" [results]="selectedDataset.chartData" [legend]="barChartConfig.legend"
             [xAxis]="barChartConfig.showXAxis" [yAxis]="barChartConfig.showYAxis" [gradient]="barChartConfig.gradient"
             (select)="onSelectFromChart($event)">
           </ngx-charts-bar-vertical>
 
           <ngx-charts-bubble-chart *ngIf="chartType===ChartType.BUBBLE" [view]="bubbleChartConfig.view"
-          [scheme]="bubbleChartConfig.colorScheme" [results]="selectedDataset" [legend]="false"
+          [scheme]="bubbleChartConfig.colorScheme" [results]="selectedDataset" [legend]="bubbleChartConfig.legend"
           [xAxis]="bubbleChartConfig.showXAxis" [yAxis]="bubbleChartConfig.showYAxis"
           [xScaleMin]="bubbleChartConfig.xScaleMin"
+          [xAxisLabel]="xLabel"
+          [yAxisLabel]="yLabel"
+          [showXAxisLabel]="bubbleChartConfig.showXAxisLabel"
+          [showYAxisLabel]="bubbleChartConfig.showYAxisLabel"
           (select)="onSelectItem($event)">
         </ngx-charts-bubble-chart>
         </div>

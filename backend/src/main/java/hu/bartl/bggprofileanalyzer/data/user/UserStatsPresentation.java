@@ -1,6 +1,7 @@
 package hu.bartl.bggprofileanalyzer.data.user;
 
 import com.google.common.collect.Lists;
+import hu.bartl.bggprofileanalyzer.data.ChartData;
 import hu.bartl.bggprofileanalyzer.data.NamedEntityWithCoordinates;
 import hu.bartl.bggprofileanalyzer.data.Popularity;
 import hu.bartl.bggprofileanalyzer.data.badge.BadgePresentation;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.util.Pair;
 
 @Data
 @Builder(toBuilder = true)
@@ -37,7 +39,7 @@ public class UserStatsPresentation {
     private final List<Popularity> recommendedPlayerCountPopularities;
     private final List<Popularity> bestPlayerCountPopularities;
 
-    private final List<NamedEntityWithCoordinates> gamesByComplexityAndPlayerCount;
+    private final List<ChartData>  gamesByComplexityAndPlayerCount;
 
     public static UserStatsPresentation fromRawStats(UserStats userStats) {
         return UserStatsPresentation.builder()
