@@ -6,3 +6,8 @@ body {
 app-page-nav {
     position: fixed;
 }
+
+
+.legend-title {
+    display: none;
+}

@@ -17,11 +17,16 @@
 
 <app-summary id="summary" [summary]=summary></app-summary>
 
+<app-preferences id="complexityVsPlayerCount" displayName="Complexity / Player count"
+  [preferences]="charts.complexityVsPlayerCount" [chartType]="ChartType.BUBBLE" xLabel="Complexity"
+  yLabel="Best player count" rLabel="Rating" seriesLabel="Subdomain">
+</app-preferences>
+
 <app-preferences id="year" displayName="Games and expansions by year" [preferences]="popularities.year"
   [chartType]="ChartType.BAR">
 </app-preferences>
 
-<app-preferences id="complexity" displayName="Complexity" [preferences]="popularities.weight"
+<app-preferences id="complexity" displayName="Games by complexity" [preferences]="popularities.weight"
   [chartType]="ChartType.BAR">
 </app-preferences>
 

@@ -8,7 +8,7 @@ import java.util.Objects;
 @Data
 public class NamedEntityWithPicture extends NamedEntity {
 
-    private String thumbnail;
+    protected final String thumbnail;
 
     @Builder(builderMethodName = "withPicture")
     public NamedEntityWithPicture(int id, String name, String thumbnail) {

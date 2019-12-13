@@ -36,7 +36,7 @@ public class XmlParser {
     private BoardGame parseBoardGame(Map<?, ?> bg) {
         BoardGame.BoardGameBuilder gameBuilder =
                 BoardGame.builder()
-                        .id(Integer.parseInt((String) bg.get("objectid")))
+                        .id(Integer.parseInt(String.valueOf(bg.get("objectid"))))
                         .name(parseName(bg.get("name")))
                         .yearpublished(Integer.parseInt((String) bg.get("yearpublished")))
                         .minplayers(Integer.parseInt((String) bg.get("minplayers")))
@@ -45,8 +45,8 @@ public class XmlParser {
                         .minplaytime(Integer.parseInt((String) bg.get("minplaytime")))
                         .maxplaytime(Integer.parseInt((String) bg.get("maxplaytime")))
                         .age(Integer.parseInt((String) bg.get("age")))
-                        .thumbnail(((String) bg.get("thumbnail")).trim())
-                        .image((String) bg.get("image"))
+                        .thumbnail((String.valueOf(bg.get("thumbnail")).trim()))
+                        .image(String.valueOf(bg.get("image")))
                         .artists(parseNamedEntities(bg.get("boardgameartist")))
                         .designers(parseNamedEntities(bg.get("boardgamedesigner")))
                         .categories(parseNamedEntities(bg.get("boardgamecategory")))
@@ -138,7 +138,7 @@ public class XmlParser {
             }
 
         }
-        builder.userRating(Double.parseDouble((String) ratings.get("usersrated")))
+        builder.userRating(Double.parseDouble((String) ratings.get("bayesaverage")))
                 .weight(Double.parseDouble((String) ratings.get("averageweight")))
                 .owned(Integer.parseInt((String) ratings.get("owned")));
     }

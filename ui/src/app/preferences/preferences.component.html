@@ -1,5 +1,5 @@
 <div class="row" *ngIf="preferences">
-  <div class="col-xl-6">
+  <div [ngClass]="(chartType==ChartType.BUBBLE)? 'col-xl-9':'col-xl-6'">
     <div class="card shadow mb-4">
 
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -24,20 +24,37 @@
           </ngx-charts-pie-chart>
 
           <ngx-charts-bar-vertical *ngIf="chartType===ChartType.BAR" [view]="barChartConfig.view"
-            [scheme]="barChartConfig.colorScheme" [results]="selectedDataset.chartData" [legend]="false"
+            [scheme]="barChartConfig.colorScheme" [results]="selectedDataset.chartData" [legend]="barChartConfig.legend"
             [xAxis]="barChartConfig.showXAxis" [yAxis]="barChartConfig.showYAxis" [gradient]="barChartConfig.gradient"
             (select)="onSelectFromChart($event)">
           </ngx-charts-bar-vertical>
+
+          <ngx-charts-bubble-chart *ngIf="chartType===ChartType.BUBBLE" [view]="bubbleChartConfig.view"
+          [scheme]="bubbleChartConfig.colorScheme" [results]="selectedDataset" [legend]="bubbleChartConfig.legend"
+          [xAxis]="bubbleChartConfig.showXAxis" [yAxis]="bubbleChartConfig.showYAxis"
+          [xScaleMin]="bubbleChartConfig.xScaleMin"
+          [xAxisLabel]="xLabel"
+          [yAxisLabel]="yLabel"
+          [showXAxisLabel]="bubbleChartConfig.showXAxisLabel"
+          [showYAxisLabel]="bubbleChartConfig.showYAxisLabel"
+          (select)="onSelectItem($event)">
+        </ngx-charts-bubble-chart>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="col-xl-6 game-list-panel">
+  <div class="game-list-panel" [ngClass]="(chartType==ChartType.BUBBLE)? 'col-xl-3':'col-xl-6'">
     <app-game-list *ngIf="selected_items && chartType===ChartType.PIE" [listOf]="selected_items.name"
       [games]="selected_items.gamesInGroup" [maxHeight]="chartConfig.view[1]"></app-game-list>
 
     <app-game-list *ngIf="selected_items && chartType===ChartType.BAR" [listOf]="selected_items.name"
       [games]="selected_items.gamesInGroup" [maxHeight]="barChartConfig.view[1] + 70"></app-game-list>
+
+    <app-game-panel *ngIf="selected_item && chartType===ChartType.BUBBLE" [maxHeight]="bubbleChartConfig.view[1] + 70"  [game]="selected_item"
+    [xLabel]="xLabel" [yLabel]="yLabel" [rLabel]="rLabel" [seriesLabel]="seriesLabel"
+    >
+      
+    </app-game-panel>
   </div>
 </div>

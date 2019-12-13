@@ -1,0 +1,20 @@
+<div class="card shadow mb-4 game-panel">
+
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <a class="m-0 font-weight-bold text-primary" href="https://boardgamegeek.com/boardgame/{{game.id}}"
+      target="blank">{{game.name}}</a>
+  </div>
+
+  <div class="card-body">
+    <div [style.max-height.px]="maxHeight">
+      <div class="img-container" [ngStyle]="{'background-image':'url('+game.thumbnail+')'}">
+      </div>
+      <div class="card-body">
+        <p class="card-text"><span class="font-weight-bold">{{seriesLabel}}:</span> {{game.series}}</p>
+        <p class="card-text"><span class="font-weight-bold">{{rLabel}}:</span> {{game.r}}</p>
+        <p class="card-text"><span class="font-weight-bold">{{xLabel}}:</span> {{game.x}}</p>
+        <p class="card-text"><span class="font-weight-bold">{{yLabel}}:</span> {{game.y}}</p>
+      </div>
+    </div>
+  </div>
+</div>

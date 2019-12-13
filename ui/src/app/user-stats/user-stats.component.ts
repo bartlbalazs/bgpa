@@ -20,6 +20,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
   summary: any = null
   badges: Badge[]
   popularities: any = {}
+  charts: any = {}
   selected_items: any = {}
 
   constructor(public apiService: ApiService) { }
@@ -50,6 +51,7 @@ export class UserStatsComponent implements OnInit, OnDestroy {
         this.popularities['year'] = PopularityData.fromRawData(message.yearPopularities);
         this.popularities['recommendedPlayers'] = PopularityData.fromRawData(message.recommendedPlayerCountPopularities);
         this.popularities['bestPlayers'] = PopularityData.fromRawData(message.bestPlayerCountPopularities);
+        this.charts['complexityVsPlayerCount'] = message.gamesByComplexityAndPlayerCount
         this.selected_items = {}
       }
     };
