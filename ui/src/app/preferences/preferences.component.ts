@@ -47,6 +47,9 @@ export class PreferencesComponent implements OnInit, OnChanges {
   @Input()
   rLabel: string
 
+  @Input()
+  seriesLabel: string
+
   filteringActive: boolean = false
 
   selected_items: any[]

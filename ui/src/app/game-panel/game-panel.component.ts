@@ -13,6 +13,18 @@ export class GamePanelComponent {
   @Input()
   game: any[]
 
+  @Input()
+  xLabel: string
+
+  @Input()
+  yLabel: string
+
+  @Input()
+  seriesLabel: string
+
+  @Input()
+  rLabel: string
+
   constructor() { }
 
 }

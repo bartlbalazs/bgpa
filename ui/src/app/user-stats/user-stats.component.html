@@ -17,8 +17,9 @@
 
 <app-summary id="summary" [summary]=summary></app-summary>
 
-<app-preferences id="complexityVsPlayerCount" displayName="Complexity player count"
-  [preferences]="charts.complexityVsPlayerCount" [chartType]="ChartType.BUBBLE" xLabel="Complexity" yLabel="Player count" rLabel="Rating">
+<app-preferences id="complexityVsPlayerCount" displayName="Complexity / Player count"
+  [preferences]="charts.complexityVsPlayerCount" [chartType]="ChartType.BUBBLE" xLabel="Complexity"
+  yLabel="Best player count" rLabel="Rating" seriesLabel="Subdomain">
 </app-preferences>
 
 <app-preferences id="year" displayName="Games and expansions by year" [preferences]="popularities.year"
