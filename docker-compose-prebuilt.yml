@@ -2,7 +2,7 @@ version: '3'
 
 services:
   bgpa-backend:
-    image: 'bartlbalazs/bgpa-backend:latest'
+    image: 'bartlbalazs/bgpa-backend:0.1'
     networks:
       - bgpa-net
     links:
@@ -12,7 +12,7 @@ services:
       - redis-server
 
   bgpa-ui:
-    image: 'bartlbalazs/bgpa-ui:latest'
+    image: 'bartlbalazs/bgpa-ui:0.1'
     expose:
       - "80"
     ports:

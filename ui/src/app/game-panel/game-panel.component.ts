@@ -11,7 +11,7 @@ export class GamePanelComponent {
   maxHeight: number;
 
   @Input()
-  game: any[]
+  game: { x: number, y: number, r: number, series: string, thumbnail: string, name: string, id: number }
 
   @Input()
   xLabel: string
